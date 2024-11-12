@@ -6,19 +6,33 @@
         "orientation": "portrait",
         "icon": "./assets/images/icon.png",
         "scheme": "myapp",
-        "userInterfaceStyle": "automatic",
-        "splash": {
-            "image": "./assets/images/splash.png",
-            "resizeMode": "contain",
-            "backgroundColor": "#ffffff"
-        },
         "ios": {
-            "supportsTablet": true
+            "splash": {
+                "backgroundColor": "#FFFFFF",
+                "dark": {
+                    "backgroundColor": "#0F1414",
+                    "image": "./assets/images/splash-dark.png",
+                    "resizeMode": "contain"
+                },
+                "image": "./assets/images/splash-light.png",
+                "resizeMode": "contain"
+            },
+            "userInterfaceStyle": "automatic"
         },
         "android": {
             "adaptiveIcon": {
                 "foregroundImage": "./assets/images/adaptive-icon.png",
                 "backgroundColor": "#ffffff"
+            },
+            "splash": {
+                "backgroundColor": "#FFFFFF",
+                "dark": {
+                    "backgroundColor": "#0F1414",
+                    "image": "./assets/images/splash-dark.png",
+                    "resizeMode": "contain"
+                },
+                "image": "./assets/images/splash-light.png",
+                "resizeMode": "contain"
             }
         },
         "web": {
