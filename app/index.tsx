@@ -4,7 +4,7 @@ import React, { FC } from 'react';
 import { ActivityIndicator, StyleSheet, View } from 'react-native';
 
 /** App Components */
-import ThemedView from '@/components/View';
+import ThemedView from '@/components/common/View';
 
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';

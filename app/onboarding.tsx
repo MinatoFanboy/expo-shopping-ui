@@ -12,11 +12,11 @@ import { BlurView } from 'expo-blur';
 import { useRouter } from 'expo-router';
 
 /** App Components */
-import Button from '@/components/Button';
-import Container from '@/components/Container';
-import HighlightText from '@/components/HighlightText';
-import Icon from '@/components/Icon';
-import ThemedText from '@/components/Text';
+import Button from '@/components/common/Button';
+import Container from '@/components/common/Container';
+import HighlightText from '@/components/common/HighlightText';
+import Icon from '@/components/common/Icon';
+import ThemedText from '@/components/common/Text';
 
 /** Hook Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';

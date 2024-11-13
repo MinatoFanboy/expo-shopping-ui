@@ -10,11 +10,11 @@ import { router } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /** App Components */
-import Button from '@/components/Button';
-import Container from '@/components/Container';
-import SocialButton from '@/components/SocialButton';
-import TextInput from '@/components/TextInput';
-import ThemedText from '@/components/Text';
+import Button from '@/components/common/Button';
+import Container from '@/components/common/Container';
+import SocialButton from '@/components/common/SocialButton';
+import TextInput from '@/components/common/TextInput';
+import ThemedText from '@/components/common/Text';
 
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';
@@ -23,7 +23,7 @@ import { GlobalColors } from '@/constants/Colors';
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 /** Async */
-import { wait } from '@/utils/async';
+import { validateEmail, wait } from '@/helpers/common';
 
 const signup: FC = () => {
     const subTitleColor = useThemeColor({}, 'text2');
@@ -53,13 +53,17 @@ const signup: FC = () => {
         setError({ confirmPassword: '', email: '', name: '', password: '' });
 
         if (form.confirmPassword && form.email && form.name && form.password) {
-            setLoading(true);
+            if (validateEmail(form.email)) {
+                setError((prev) => ({ ...prev, email: 'Email is not in correct format' }));
+            } else {
+                setLoading(true);
 
-            await wait(500);
+                await wait(500);
 
-            await AsyncStorage.setItem('user', JSON.stringify(form));
+                await AsyncStorage.setItem('user', JSON.stringify(form));
 
-            router.back();
+                router.back();
+            }
         } else {
             if (form.confirmPassword === '') {
                 setError((prev) => ({ ...prev, confirmPassword: 'Confirm password cannot be blank' }));
@@ -147,7 +151,7 @@ const signup: FC = () => {
                     <View style={styles.otherLoginLabel}>
                         <View style={[styles.otherLoginSeparate, { backgroundColor: GlobalColors.gray }]} />
 
-                        <ThemedText>Or login with</ThemedText>
+                        <ThemedText type={'body2'}>Or login with</ThemedText>
 
                         <View style={[styles.otherLoginSeparate, { backgroundColor: GlobalColors.gray }]} />
                     </View>
@@ -159,13 +163,15 @@ const signup: FC = () => {
                     <SocialButton style={{ marginTop: 10 }} type={'facebook'} />
 
                     <View style={styles.signUp}>
-                        <ThemedText>{'Already have an account?'}</ThemedText>
+                        <ThemedText type={'body2'}>{'Already have an account?'}</ThemedText>
                         <TouchableOpacity
                             activeOpacity={0.7}
                             hitSlop={{ bottom: 4, left: 4, right: 4, top: 4 }}
                             onPress={() => router.back()}
                         >
-                            <ThemedText style={{ color: GlobalColors.primary }}>Login</ThemedText>
+                            <ThemedText style={{ color: GlobalColors.primary }} type={'body2'}>
+                                Login
+                            </ThemedText>
                         </TouchableOpacity>
                     </View>
                 </View>

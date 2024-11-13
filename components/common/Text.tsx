@@ -74,8 +74,8 @@ const styles = StyleSheet.create({
         lineHeight: 16,
     },
     default: {
-        fontSize: 14,
-        lineHeight: 20,
+        fontSize: 16,
+        lineHeight: 22,
     },
     header1: {
         fontSize: 80,

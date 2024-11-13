@@ -60,6 +60,7 @@ const TextInput: FC<TextInputProps> = ({ error, icon, secureTextEntry, value, ..
                     secureTextEntry={secureTextEntry ? isShowPassword : false}
                     selectionColor={GlobalColors.primary}
                     style={[styles.input, { color }]}
+                    value={value}
                     {...rest}
                 />
 

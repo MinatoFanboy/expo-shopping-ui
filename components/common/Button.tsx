@@ -1,7 +1,10 @@
 import React, { FC, memo } from 'react';
 
 /** React Native */
-import { ActivityIndicator, Pressable, StyleProp, StyleSheet, Text, TextStyle, ViewStyle } from 'react-native';
+import { ActivityIndicator, Pressable, StyleProp, StyleSheet, TextStyle, ViewStyle } from 'react-native';
+
+/** App Components */
+import ThemedText from './Text';
 
 /** Global Colors */
 import { GlobalColors } from '@/constants/Colors';
@@ -27,16 +30,12 @@ const Button: FC<ButtonProps> = ({ loading, onPress = () => {}, style, title = '
         >
             {loading && <ActivityIndicator color={GlobalColors.white} size={16} />}
 
-            <Text style={[{ color: GlobalColors.white }, styles.title, titleStyle]}>{title}</Text>
+            <ThemedText style={[{ color: GlobalColors.white }, titleStyle]}>{title}</ThemedText>
         </Pressable>
     );
 };
 
 const styles = StyleSheet.create({
-    title: {
-        fontSize: 16,
-        lineHeight: 22,
-    },
     button: {
         alignItems: 'center',
         borderRadius: 999,

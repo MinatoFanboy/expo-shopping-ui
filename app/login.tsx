@@ -10,11 +10,11 @@ import { useNavigation, useRouter } from 'expo-router';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /** App Components */
-import Button from '@/components/Button';
-import Container from '@/components/Container';
-import SocialButton from '@/components/SocialButton';
-import TextInput from '@/components/TextInput';
-import ThemedText from '@/components/Text';
+import Button from '@/components/common/Button';
+import Container from '@/components/common/Container';
+import SocialButton from '@/components/common/SocialButton';
+import TextInput from '@/components/common/TextInput';
+import ThemedText from '@/components/common/Text';
 
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';
@@ -23,7 +23,7 @@ import { GlobalColors } from '@/constants/Colors';
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 /** Async */
-import { wait } from '@/utils/async';
+import { validateEmail, wait } from '@/helpers/common';
 
 const login: FC = () => {
     const navigation = useNavigation();
@@ -43,13 +43,17 @@ const login: FC = () => {
         setError({ email: '', password: '' });
 
         if (form.email && form.password) {
-            setLoading(true);
+            if (validateEmail(form.email)) {
+                setError((prev) => ({ ...prev, email: 'Email is not in correct format' }));
+            } else {
+                setLoading(true);
 
-            await wait(500);
+                await wait(500);
 
-            await AsyncStorage.setItem('user', JSON.stringify(form));
+                await AsyncStorage.setItem('user', JSON.stringify(form));
 
-            router.replace('/home');
+                router.replace('/home');
+            }
         } else {
             if (form.email === '') {
                 setError((prev) => ({ ...prev, email: 'Email cannot be blank' }));
@@ -138,7 +142,7 @@ const login: FC = () => {
                     <View style={styles.otherLoginLabel}>
                         <View style={[styles.otherLoginSeparate, { backgroundColor: GlobalColors.gray }]} />
 
-                        <ThemedText>Or login with</ThemedText>
+                        <ThemedText type={'body2'}>Or login with</ThemedText>
 
                         <View style={[styles.otherLoginSeparate, { backgroundColor: GlobalColors.gray }]} />
                     </View>
@@ -150,13 +154,15 @@ const login: FC = () => {
                     <SocialButton style={{ marginTop: 10 }} type={'facebook'} />
 
                     <View style={styles.signUp}>
-                        <ThemedText>{'First time here?'}</ThemedText>
+                        <ThemedText type={'body2'}>{'First time here?'}</ThemedText>
                         <TouchableOpacity
                             activeOpacity={0.7}
                             hitSlop={{ bottom: 4, left: 4, right: 4, top: 4 }}
                             onPress={() => router.push('/signup')}
                         >
-                            <ThemedText style={{ color: GlobalColors.primary }}>Signup</ThemedText>
+                            <ThemedText style={{ color: GlobalColors.primary }} type={'body2'}>
+                                Signup
+                            </ThemedText>
                         </TouchableOpacity>
                     </View>
                 </View>

@@ -40,9 +40,7 @@ const SocialButton: FC<SocialButtonProps> = ({ onPress = () => {}, style, type, 
                 style={{ height: 24, width: 24 }}
             />
 
-            <ThemedText style={[styles.title, titleStyle]}>{`Login with ${
-                type === 'facebook' ? 'Facebook' : 'Google'
-            }`}</ThemedText>
+            <ThemedText style={titleStyle}>{`Login with ${type === 'facebook' ? 'Facebook' : 'Google'}`}</ThemedText>
         </Pressable>
     );
 };
@@ -60,10 +58,6 @@ const styles = StyleSheet.create({
     icon: {
         height: 24,
         width: 24,
-    },
-    title: {
-        fontSize: 16,
-        lineHeight: 22,
     },
 });
 

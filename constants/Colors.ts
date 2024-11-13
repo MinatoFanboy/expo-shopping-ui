@@ -102,6 +102,8 @@ export const GlobalColors = {
 export const ThemeColors = {
     dark: {
         background: dark500,
+        background1: '#1D2221',
+        border: '#2C302F',
         buttonFocused: dark10P,
         dot: '#515555',
         input: dark5P,
@@ -111,6 +113,8 @@ export const ThemeColors = {
     },
     light: {
         background: white500,
+        background1: gray10P,
+        border: gray20P,
         buttonFocused: gray10P,
         dot: gray20P,
         input: gray5P,

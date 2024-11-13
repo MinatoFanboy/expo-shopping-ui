@@ -9,9 +9,6 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 /** App Components */
 import ThemedView from './View';
 
-/** Hook Theme */
-import { useThemeColor } from '@/hooks/useThemeColor';
-
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';
 
@@ -26,15 +23,9 @@ const Container: FC<PropsWithChildren<ContainerProps>> = ({ children, footer, he
     const paddingTop = top > 0 ? top : 24;
     const paddingBottom = bottom > 0 ? bottom : 24;
 
-    const backgroundColor = useThemeColor({}, 'background');
-
     return (
         <ThemedView
-            style={[
-                styles.container,
-                { paddingTop },
-                { backgroundColor: noScroll ? GlobalColors.white : backgroundColor },
-            ]}
+            style={[styles.container, { paddingTop }, noScroll ? { backgroundColor: GlobalColors.white } : undefined]}
         >
             {header}
 
