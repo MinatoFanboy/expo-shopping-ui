@@ -91,11 +91,31 @@ const option2 = '#30BEB6';
 const option3 = '#5D30BE';
 const option4 = '#304FBE';
 
-export const Colors = {
+export const GlobalColors = {
+    error: '#FF7F74',
+    gray: gray10P,
+    primary: primary500,
+    primary600: primary600,
+    white: white500,
+};
+
+export const ThemeColors = {
     dark: {
-        text: light500,
+        background: dark500,
+        buttonFocused: dark10P,
+        dot: '#515555',
+        input: dark5P,
+        placeholder: dark20P,
+        text: white500,
+        text2: white500,
     },
     light: {
+        background: white500,
+        buttonFocused: gray10P,
+        dot: gray20P,
+        input: gray5P,
+        placeholder: dark20P,
         text: dark500,
+        text2: gray500,
     },
 };

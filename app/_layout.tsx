@@ -21,7 +21,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 /** Auth Context */
 import { AuthProvider, useAuth } from '@/contexts/AuthContext';
 
-/** Hook System Theme */
+/** Hook App Theme */
 import { useColorScheme } from '@/hooks/useColorScheme';
 
 /** Prevent the splash screen from auto-hiding before asset loading is complete. */
@@ -36,9 +36,9 @@ const _layout: FC = () => {
         'Poppins-Light': require('../assets/fonts/Poppins-Light.ttf'),
         'Poppins-Medium': require('../assets/fonts/Poppins-Medium.ttf'),
         'Poppins-Regular': require('../assets/fonts/Poppins-Regular.ttf'),
-        'Poppins-Semibold': require('../assets/fonts/Poppins-Semibold.ttf'),
+        'Poppins-SemiBold': require('../assets/fonts/Poppins-SemiBold.ttf'),
         'Poppins-Thin': require('../assets/fonts/Poppins-Thin.ttf'),
-        iconmoon: require('../assets/fonts/icomoon.ttf'),
+        icomoon: require('../assets/fonts/icomoon.ttf'),
     });
 
     useEffect(() => {
@@ -74,7 +74,7 @@ const RootLayout: FC = () => {
                     router.replace('/home');
                 } else {
                     setAuth?.(null);
-                    router.replace('/login');
+                    router.replace('/onboarding');
                 }
             } catch {}
         };
@@ -85,7 +85,7 @@ const RootLayout: FC = () => {
     return (
         <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
             <Stack screenOptions={{ headerShown: false }}>
-                <Stack.Screen name={'login'} />
+                <Stack.Screen name={'onboarding'} />
             </Stack>
         </ThemeProvider>
     );

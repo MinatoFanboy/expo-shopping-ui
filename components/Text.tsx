@@ -1,12 +1,12 @@
-import { FC } from 'react';
+import React, { FC } from 'react';
 
 /** React Native */
-import { StyleSheet, Text as RnText, type TextProps } from 'react-native';
+import { StyleSheet, Text as RnText, TextProps as RnTextProps } from 'react-native';
 
 /** Hook Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 
-export type ThemedTextProps = TextProps & {
+export type TextProps = RnTextProps & {
     bold?: boolean;
     darkColor?: string;
     lightColor?: string;
@@ -25,7 +25,7 @@ export type ThemedTextProps = TextProps & {
         | 'label';
 };
 
-const Text: FC<ThemedTextProps> = ({ bold, darkColor, lightColor, style, type = 'default', ...rest }) => {
+const Text: FC<TextProps> = ({ bold, darkColor, lightColor, style, type = 'default', ...rest }) => {
     const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
 
     return (
