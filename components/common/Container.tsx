@@ -6,6 +6,9 @@ import { ScrollView, StyleSheet, View } from 'react-native';
 /** Safe Area */
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
+/** Keyboard aware */
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+
 /** App Components */
 import ThemedView from './View';
 
@@ -13,31 +16,54 @@ import ThemedView from './View';
 import { GlobalColors } from '@/constants/Colors';
 
 interface ContainerProps {
-    header?: ReactNode;
     footer?: ReactNode;
-    noScroll?: boolean;
+    header?: ReactNode;
+    keyboard?: boolean;
+    scroll?: boolean;
 }
 
-const Container: FC<PropsWithChildren<ContainerProps>> = ({ children, footer, header, noScroll = false }) => {
+const Container: FC<PropsWithChildren<ContainerProps>> = ({
+    children,
+    footer,
+    header,
+    keyboard = false,
+    scroll = false,
+}) => {
     const { bottom, top } = useSafeAreaInsets();
     const paddingTop = top > 0 ? top : 24;
     const paddingBottom = bottom > 0 ? bottom : 24;
 
     return (
         <ThemedView
-            style={[styles.container, { paddingTop }, noScroll ? { backgroundColor: GlobalColors.white } : undefined]}
+            style={[
+                styles.container,
+                { paddingTop },
+                keyboard || scroll ? { backgroundColor: GlobalColors.white } : undefined,
+            ]}
         >
             {header}
 
-            {noScroll ? (
-                <View style={[styles.container, { paddingBottom, paddingHorizontal: 20 }]}>{children}</View>
+            {scroll ? (
+                <>
+                    {keyboard ? (
+                        <KeyboardAwareScrollView
+                            contentContainerStyle={{ flexGrow: 1, paddingBottom, paddingHorizontal: 20 }}
+                            showsVerticalScrollIndicator={false}
+                            style={styles.container}
+                        >
+                            {children}
+                        </KeyboardAwareScrollView>
+                    ) : (
+                        <ScrollView
+                            contentContainerStyle={{ flexGrow: 1, paddingBottom, paddingHorizontal: 20 }}
+                            style={styles.container}
+                        >
+                            {children}
+                        </ScrollView>
+                    )}
+                </>
             ) : (
-                <ScrollView
-                    contentContainerStyle={{ flexGrow: 1, paddingBottom, paddingHorizontal: 20 }}
-                    style={styles.container}
-                >
-                    {children}
-                </ScrollView>
+                <View style={[styles.container, { paddingBottom, paddingHorizontal: 20 }]}>{children}</View>
             )}
 
             {footer}

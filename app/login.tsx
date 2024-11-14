@@ -43,12 +43,14 @@ const login: FC = () => {
         setError({ email: '', password: '' });
 
         if (form.email && form.password) {
-            if (validateEmail(form.email)) {
+            if (!validateEmail(form.email)) {
                 setError((prev) => ({ ...prev, email: 'Email is not in correct format' }));
             } else {
                 setLoading(true);
 
                 await wait(500);
+
+                setLoading(false);
 
                 await AsyncStorage.setItem('user', JSON.stringify(form));
 
@@ -75,7 +77,7 @@ const login: FC = () => {
     }, []);
 
     return (
-        <Container>
+        <Container keyboard>
             {/** Header  */}
             <View style={styles.header}>
                 {/** Logo */}
@@ -133,7 +135,7 @@ const login: FC = () => {
                         </View>
                     </View>
 
-                    <Button onPress={onSubmit} title={'Login'} />
+                    <Button loading={loading} onPress={onSubmit} title={'Login'} />
                 </View>
 
                 {/** Other login */}

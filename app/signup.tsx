@@ -4,7 +4,7 @@ import React, { FC, useCallback, useState } from 'react';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 /** Router */
-import { router } from 'expo-router';
+import { useRouter } from 'expo-router';
 
 /** Local Storage */
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -26,6 +26,7 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 import { validateEmail, wait } from '@/helpers/common';
 
 const signup: FC = () => {
+    const router = useRouter();
     const subTitleColor = useThemeColor({}, 'text2');
 
     const [error, setError] = useState<{ confirmPassword: string; email: string; name: string; password: string }>({
@@ -53,12 +54,14 @@ const signup: FC = () => {
         setError({ confirmPassword: '', email: '', name: '', password: '' });
 
         if (form.confirmPassword && form.email && form.name && form.password) {
-            if (validateEmail(form.email)) {
+            if (!validateEmail(form.email)) {
                 setError((prev) => ({ ...prev, email: 'Email is not in correct format' }));
             } else {
                 setLoading(true);
 
                 await wait(500);
+
+                setLoading(false);
 
                 await AsyncStorage.setItem('user', JSON.stringify(form));
 
@@ -81,7 +84,7 @@ const signup: FC = () => {
     }, [form]);
 
     return (
-        <Container>
+        <Container keyboard>
             {/** Header  */}
             <View style={styles.header}>
                 {/** Logo */}

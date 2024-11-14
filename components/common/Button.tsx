@@ -39,6 +39,8 @@ const styles = StyleSheet.create({
     button: {
         alignItems: 'center',
         borderRadius: 999,
+        flexDirection: 'row',
+        gap: 12,
         height: 56,
         justifyContent: 'center',
         width: '100%',

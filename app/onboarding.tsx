@@ -73,7 +73,7 @@ const onboarding: FC = () => {
     }, []);
 
     return (
-        <Container noScroll>
+        <Container>
             {/** Image Background */}
             <FlatList
                 data={onboardingData}
