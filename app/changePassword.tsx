@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useState } from 'react';
+import React, { FC, useCallback, useRef, useState } from 'react';
 
 /** React Native */
 import { Image, StyleSheet, View, useColorScheme } from 'react-native';
@@ -10,11 +10,9 @@ import { useRouter } from 'expo-router';
 import Button from '@/components/common/Button';
 import Container from '@/components/common/Container';
 import Header from '@/components/Header';
+import Modal from '@/components/common/Modal';
 import TextInput from '@/components/common/TextInput';
 import ThemedText from '@/components/common/Text';
-
-/** App Colors */
-import { GlobalColors } from '@/constants/Colors';
 
 /** Hook Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
@@ -22,12 +20,13 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 /** Dimension */
 import { hp, wait } from '@/helpers/common';
 
-const changePassword: FC = () => {
+const ChangePasswordScreen: FC = () => {
     const router = useRouter();
     const theme = useColorScheme() ?? 'light';
 
     const subTitleColor = useThemeColor({}, 'text2');
 
+    const modalRef = useRef<any>(null);
     const [error, setError] = useState<{ confirmPassword: string; password: string }>({
         confirmPassword: '',
         password: '',
@@ -37,6 +36,12 @@ const changePassword: FC = () => {
         password: '',
     });
     const [loading, setLoading] = useState<boolean>(false);
+
+    const onBack = useCallback(() => {
+        modalRef.current?.hide();
+
+        router.push('/login');
+    }, []);
 
     const onChangeForm = useCallback(({ name, value }: { name: 'confirmPassword' | 'password'; value: string }) => {
         setForm((prev) => ({ ...prev, [name]: value }));
@@ -53,7 +58,7 @@ const changePassword: FC = () => {
 
                 setLoading(false);
 
-                router.back();
+                modalRef.current?.show();
             } else {
                 setError((prev) => ({ ...prev, confirmPassword: 'Password does not match' }));
             }
@@ -116,6 +121,28 @@ const changePassword: FC = () => {
             <View style={{ marginTop: 30 }}>
                 <Button loading={loading} onPress={onSubmit} title={'Verify'} />
             </View>
+
+            <Modal ref={modalRef}>
+                <View>
+                    <View style={{ alignItems: 'center', gap: 20 }}>
+                        <Image source={require('@/assets/icons/phone.png')} />
+
+                        <View style={{ width: '70%' }}>
+                            <ThemedText bold style={styles.textCenter} type={'header6'}>
+                                Password Update Successfully
+                            </ThemedText>
+                        </View>
+
+                        <View style={{ width: '60%' }}>
+                            <ThemedText style={styles.textCenter} type={'body2'}>
+                                Your password has been updated successfully
+                            </ThemedText>
+                        </View>
+                    </View>
+
+                    <Button onPress={onBack} title={'Back to Home'} style={{ marginTop: 30 }} />
+                </View>
+            </Modal>
         </Container>
     );
 };
@@ -123,6 +150,7 @@ const changePassword: FC = () => {
 const styles = StyleSheet.create({
     form: {
         gap: 16,
+        marginTop: 20,
     },
     header: {
         alignItems: 'center',
@@ -145,4 +173,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default changePassword;
+export default ChangePasswordScreen;

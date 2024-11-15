@@ -25,7 +25,7 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 /** Dimension */
 import { hp, wait } from '@/helpers/common';
 
-const verification: FC = () => {
+const Verification: FC = () => {
     const router = useRouter();
     const theme = useColorScheme() ?? 'light';
 
@@ -96,7 +96,7 @@ const verification: FC = () => {
                 style={[styles.image, { height: hp(40) }]}
             />
 
-            <View>
+            <View style={{ marginTop: 20 }}>
                 <OTPInputView
                     codeInputFieldStyle={{
                         backgroundColor: inputColor,
@@ -161,4 +161,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default verification;
+export default Verification;

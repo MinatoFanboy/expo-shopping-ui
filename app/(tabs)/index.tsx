@@ -9,10 +9,10 @@ import { useNavigation, useRouter } from 'expo-router';
 /** Local Storage */
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-/** React Native */
-import { View } from 'react-native';
+/** App Components */
+import Container from '@/components/common/Container';
 
-const home: FC = () => {
+const HomeScreen: FC = () => {
     const navigation = useNavigation();
     const router = useRouter();
 
@@ -31,10 +31,10 @@ const home: FC = () => {
     }, []);
 
     return (
-        <View style={{ alignItems: 'center', flex: 1, justifyContent: 'center' }}>
+        <Container scroll>
             <Button onPress={onLogout} title={'Đăng xuất'} />
-        </View>
+        </Container>
     );
 };
 
-export default home;
+export default HomeScreen;

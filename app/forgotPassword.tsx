@@ -19,7 +19,7 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 /** Dimension */
 import { hp, validateEmail, validatePhone, wait } from '@/helpers/common';
 
-const forgotPassword: FC = () => {
+const ForgotPasswordScreen: FC = () => {
     const router = useRouter();
     const theme = useColorScheme() ?? 'light';
 
@@ -151,4 +151,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default forgotPassword;
+export default ForgotPasswordScreen;

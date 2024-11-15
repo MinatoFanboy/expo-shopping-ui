@@ -28,7 +28,7 @@ import { imageMap } from '@/constants/Constants';
 /** DATA */
 import onboardingData from '@/mocks/onboarding.json';
 
-const onboarding: FC = () => {
+const OnboardingScreen: FC = () => {
     const router = useRouter();
 
     const blurColor = useThemeColor({ dark: 'rgba(0, 0, 0, 0.56)', light: 'rgba(255, 255, 255, 0.56)' }, 'background');
@@ -220,4 +220,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default onboarding;
+export default OnboardingScreen;

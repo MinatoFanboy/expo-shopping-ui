@@ -9,7 +9,7 @@ import ThemedView from '@/components/common/View';
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';
 
-const index: FC = () => {
+const LoadingScreen: FC = () => {
     return (
         <ThemedView style={styles.container}>
             <View style={styles.center}>
@@ -31,4 +31,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default index;
+export default LoadingScreen;

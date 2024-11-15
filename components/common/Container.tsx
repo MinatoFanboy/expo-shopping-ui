@@ -38,7 +38,7 @@ const Container: FC<PropsWithChildren<ContainerProps>> = ({
             style={[
                 styles.container,
                 { paddingTop },
-                keyboard || scroll ? { backgroundColor: GlobalColors.white } : undefined,
+                keyboard || scroll ? undefined : { backgroundColor: GlobalColors.white },
             ]}
         >
             {header}

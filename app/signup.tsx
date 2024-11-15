@@ -25,7 +25,7 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 /** Async */
 import { validateEmail, wait } from '@/helpers/common';
 
-const signup: FC = () => {
+const SignupScreen: FC = () => {
     const router = useRouter();
     const subTitleColor = useThemeColor({}, 'text2');
 
@@ -222,4 +222,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default signup;
+export default SignupScreen;

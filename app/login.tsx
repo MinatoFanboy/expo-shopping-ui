@@ -25,7 +25,7 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 /** Async */
 import { validateEmail, wait } from '@/helpers/common';
 
-const login: FC = () => {
+const LoginScreen: FC = () => {
     const navigation = useNavigation();
     const router = useRouter();
 
@@ -54,7 +54,7 @@ const login: FC = () => {
 
                 await AsyncStorage.setItem('user', JSON.stringify(form));
 
-                router.replace('/home');
+                router.replace('/(tabs)');
             }
         } else {
             if (form.email === '') {
@@ -212,4 +212,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default login;
+export default LoginScreen;

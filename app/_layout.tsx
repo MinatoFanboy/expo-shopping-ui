@@ -71,7 +71,7 @@ const RootLayout: FC = () => {
 
                 if (user) {
                     setAuth?.(JSON.parse(user) as any);
-                    router.replace('/home');
+                    router.replace('/(tabs)');
                 } else {
                     setAuth?.(null);
                     router.replace('/onboarding');
@@ -85,6 +85,7 @@ const RootLayout: FC = () => {
     return (
         <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
             <Stack screenOptions={{ headerShown: false }}>
+                <Stack.Screen name="(tabs)" />
                 <Stack.Screen name={'onboarding'} />
             </Stack>
         </ThemeProvider>

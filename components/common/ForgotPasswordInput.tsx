@@ -52,7 +52,7 @@ const ForgotPasswordInput: FC<TextInputProps> = ({ error, selected, type, ...res
 
                 <View style={{ flex: 1 }}>
                     <ThemedText style={{ color: subTitleColor }} type={'caption'}>{`Send OTP via ${
-                        type === 'email' ? 'SMS' : 'Email'
+                        type === 'email' ? 'Email' : 'SMS'
                     }`}</ThemedText>
 
                     <View style={styles.wrapper}>
