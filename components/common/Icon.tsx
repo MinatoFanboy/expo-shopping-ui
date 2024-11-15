@@ -20,7 +20,7 @@ type IconProps = {
 };
 
 const Icon: FC<IconProps> = ({ color, name, size, style }) => {
-    const defaultColor = useThemeColor({}, 'text');
+    const defaultColor = useThemeColor({}, 'text1');
 
     const FontIcon = createIconSetFromIcoMoon(icoMoonConfig, 'icomoon', 'icomoon');
 

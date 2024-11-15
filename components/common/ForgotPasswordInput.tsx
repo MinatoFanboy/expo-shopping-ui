@@ -1,4 +1,4 @@
-import React, { FC, memo, useState } from 'react';
+import React, { FC, memo } from 'react';
 
 /** React Native */
 import { TextInput as RnTextInput, TextInputProps as RnTextInputProps, StyleSheet, View } from 'react-native';
@@ -25,7 +25,7 @@ export type TextInputProps = RnTextInputProps & {
 
 const ForgotPasswordInput: FC<TextInputProps> = ({ error, selected, type, ...rest }) => {
     const borderColor = useThemeColor({}, 'border');
-    const color = useThemeColor({}, 'text');
+    const color = useThemeColor({}, 'text1');
     const placeholderColor = useThemeColor({}, 'placeholder');
     const subTitleColor = useThemeColor({}, 'text2');
 
@@ -113,6 +113,7 @@ const styles = StyleSheet.create({
         width: 44,
     },
     input: {
+        fontFamily: 'Poppins-Regular',
         fontSize: 14,
         paddingVertical: 0,
         width: '100%',

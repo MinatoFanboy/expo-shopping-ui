@@ -19,8 +19,8 @@ const Modal = forwardRef<ModalRef, { children?: ReactNode }>(({ children }, ref)
 
     const translateAnimate = useRef<Animated.Value>(new Animated.Value(0)).current;
 
-    const blurColor = useThemeColor({ dark: 'rgba(231, 153, 85, 0.2)', light: 'rgba(0, 0, 0, 0.07)' }, 'background');
-    const backgroundColor = useThemeColor({}, 'background');
+    const blurColor = useThemeColor({ dark: 'rgba(231, 153, 85, 0.2)', light: 'rgba(0, 0, 0, 0.07)' }, 'background1');
+    const backgroundColor = useThemeColor({}, 'background2');
 
     useImperativeHandle(ref, () => ({
         hide: () => {

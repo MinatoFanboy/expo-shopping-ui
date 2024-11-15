@@ -8,6 +8,7 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 
 export type TextProps = RnTextProps & {
     bold?: boolean;
+    color?: 'text1' | 'text2';
     darkColor?: string;
     lightColor?: string;
     type?:
@@ -25,13 +26,13 @@ export type TextProps = RnTextProps & {
         | 'label';
 };
 
-const Text: FC<TextProps> = ({ bold, darkColor, lightColor, style, type = 'default', ...rest }) => {
-    const color = useThemeColor({ light: lightColor, dark: darkColor }, 'text');
+const Text: FC<TextProps> = ({ bold, color = 'text1', darkColor, lightColor, style, type = 'default', ...rest }) => {
+    const textColor = useThemeColor({ light: lightColor, dark: darkColor }, color);
 
     return (
         <RnText
             style={[
-                { color },
+                { color: textColor, fontFamily: 'Poppins-Regular' },
                 bold ? styles.bold : undefined,
                 /** Font Style */
                 type === 'default' ? styles.default : undefined,
@@ -67,7 +68,7 @@ const styles = StyleSheet.create({
         lineHeight: 20,
     },
     bold: {
-        fontWeight: 'bold',
+        fontFamily: 'Poppins-Bold',
     },
     caption: {
         fontSize: 12,
@@ -88,7 +89,6 @@ const styles = StyleSheet.create({
     },
     header4: {
         fontSize: 30,
-        fontWeight: 'bold',
         lineHeight: 36,
     },
     header5: {

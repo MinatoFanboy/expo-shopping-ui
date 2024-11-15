@@ -7,12 +7,12 @@ import { View as RnView, ViewProps as RnViewProps } from 'react-native';
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 type ViewProps = RnViewProps & {
-    background?: 'background' | 'background1';
+    background?: 'background1' | 'background2';
     darkColor?: string;
     lightColor?: string;
 };
 
-const View: FC<ViewProps> = ({ background = 'background', darkColor, lightColor, style, ...rest }) => {
+const View: FC<ViewProps> = ({ background = 'background1', darkColor, lightColor, style, ...rest }) => {
     const backgroundColor = useThemeColor({ dark: darkColor, light: lightColor }, background);
 
     return <RnView style={[{ backgroundColor }, style]} {...rest} />;

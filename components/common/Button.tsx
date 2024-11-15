@@ -1,4 +1,4 @@
-import React, { FC, memo } from 'react';
+import React, { FC, memo, ReactNode } from 'react';
 
 /** React Native */
 import { ActivityIndicator, Pressable, StyleProp, StyleSheet, TextStyle, ViewStyle } from 'react-native';
@@ -10,6 +10,7 @@ import ThemedText from './Text';
 import { GlobalColors } from '@/constants/Colors';
 
 interface ButtonProps {
+    icon?: ReactNode;
     loading?: boolean;
     onPress?: () => void;
     style?: StyleProp<ViewStyle>;
@@ -17,20 +18,24 @@ interface ButtonProps {
     titleStyle?: StyleProp<TextStyle>;
 }
 
-const Button: FC<ButtonProps> = ({ loading, onPress = () => {}, style, title = 'Title', titleStyle }) => {
+const Button: FC<ButtonProps> = ({ icon, loading, onPress = () => {}, style, title, titleStyle }) => {
     return (
         <Pressable
             disabled={loading}
             onPress={onPress}
             style={({ pressed }) => [
-                { backgroundColor: pressed ? GlobalColors.primary600 : GlobalColors.primary },
+                {
+                    backgroundColor: pressed ? GlobalColors.primary600 : GlobalColors.primary,
+                },
                 styles.button,
                 style,
             ]}
         >
             {loading && <ActivityIndicator color={GlobalColors.white} size={16} />}
 
-            <ThemedText style={[{ color: GlobalColors.white }, titleStyle]}>{title}</ThemedText>
+            {icon && icon}
+
+            {title && <ThemedText style={[{ color: GlobalColors.white }, titleStyle]}>{title}</ThemedText>}
         </Pressable>
     );
 };

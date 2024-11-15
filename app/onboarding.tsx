@@ -31,7 +31,7 @@ import onboardingData from '@/mocks/onboarding.json';
 const OnboardingScreen: FC = () => {
     const router = useRouter();
 
-    const blurColor = useThemeColor({ dark: 'rgba(0, 0, 0, 0.56)', light: 'rgba(255, 255, 255, 0.56)' }, 'background');
+    const blurColor = useThemeColor({ dark: 'rgba(0, 0, 0, 0.56)', light: 'rgba(255, 255, 255, 0.56)' }, 'background1');
     const dotDefaultColor = useThemeColor({}, 'dot');
     const subTitleColor = useThemeColor({}, 'text2');
 
@@ -200,6 +200,7 @@ const styles = StyleSheet.create({
         width: 34,
     },
     nextText: {
+        fontFamily: 'Poppins-Regular',
         fontSize: 14,
         lineHeight: 20,
     },

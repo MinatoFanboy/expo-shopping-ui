@@ -6,9 +6,6 @@ import { Image, Pressable, StyleProp, StyleSheet, TextStyle, ViewStyle } from 'r
 /** App Components */
 import ThemedText from './Text';
 
-/** Global Colors */
-import { GlobalColors } from '@/constants/Colors';
-
 /** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 

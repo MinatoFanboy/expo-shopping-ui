@@ -30,7 +30,7 @@ const TextInput: FC<TextInputProps> = ({ error, icon, secureTextEntry, value, ..
     const [isShowPassword, setIsShowPassword] = useState<boolean>(true);
 
     const backgroundColor = useThemeColor({}, 'input');
-    const color = useThemeColor({}, 'text');
+    const color = useThemeColor({}, 'text1');
     const placeholderColor = useThemeColor({}, 'placeholder');
 
     return (
@@ -101,6 +101,7 @@ const styles = StyleSheet.create({
     },
     input: {
         flex: 1,
+        fontFamily: 'Poppins-Regular',
         fontSize: 16,
         paddingVertical: 0,
     },

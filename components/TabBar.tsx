@@ -28,7 +28,7 @@ const TabBar: FC<BottomTabBarProps> = ({ descriptors, navigation, state }) => {
     const { bottom } = useSafeAreaInsets();
     const paddingBottom = bottom > 0 ? bottom : 24;
 
-    const color = useThemeColor({}, 'text');
+    const color = useThemeColor({}, 'text1');
     const background = useThemeColor({}, 'tabBar');
 
     const icons = {
