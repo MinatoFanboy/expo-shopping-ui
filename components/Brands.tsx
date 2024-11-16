@@ -49,35 +49,13 @@ const BrandsContent: FC = () => {
 const BrandsFallback: FC = () => {
     return (
         <View style={styles.fallback}>
-            <View style={{ width: 72 }}>
-                <Placeholder Animation={Fade}>
-                    <PlaceholderLine noMargin style={styles.brandItem} />
-                </Placeholder>
-            </View>
-
-            <View style={{ width: 72 }}>
-                <Placeholder Animation={Fade}>
-                    <PlaceholderLine noMargin style={styles.brandItem} />
-                </Placeholder>
-            </View>
-
-            <View style={{ width: 72 }}>
-                <Placeholder Animation={Fade}>
-                    <PlaceholderLine noMargin style={styles.brandItem} />
-                </Placeholder>
-            </View>
-
-            <View style={{ width: 72 }}>
-                <Placeholder Animation={Fade}>
-                    <PlaceholderLine noMargin style={styles.brandItem} />
-                </Placeholder>
-            </View>
-
-            <View style={{ width: 72 }}>
-                <Placeholder Animation={Fade}>
-                    <PlaceholderLine noMargin style={styles.brandItem} />
-                </Placeholder>
-            </View>
+            {[...new Array(5)].map((_, index) => (
+                <View key={`Brand-${index}`} style={{ width: 72 }}>
+                    <Placeholder Animation={Fade}>
+                        <PlaceholderLine noMargin style={styles.brandItem} />
+                    </Placeholder>
+                </View>
+            ))}
         </View>
     );
 };

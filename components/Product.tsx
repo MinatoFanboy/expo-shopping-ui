@@ -23,7 +23,7 @@ interface ProductProps {
 
 const Product: FC<ProductProps> = ({ product, style }) => {
     const iconColor = useThemeColor({}, 'text2');
-    const backgroundColor = useThemeColor({}, 'background2');
+    const backgroundColor = useThemeColor({}, 'background1');
 
     return (
         <TouchableOpacity activeOpacity={0.7} style={[styles.container, { backgroundColor }, style]}>
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
             height: 24,
             width: 16,
         },
-        shadowOpacity: 0.15,
+        shadowOpacity: 0.1,
         shadowRadius: 24,
     },
     favorite: {
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
         width: 34,
     },
     thumbnail: {
-        height: hp(24),
+        height: hp(22),
         width: '100%',
     },
 });

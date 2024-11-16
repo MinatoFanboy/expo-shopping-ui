@@ -4,10 +4,9 @@ import React, { FC, useEffect } from 'react';
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
 /** Router */
-import { useNavigation } from 'expo-router';
+import { useNavigation, useRouter } from 'expo-router';
 
 /** App Components */
-import Button from '@/components/common/Button';
 import Container from '@/components/common/Container';
 import Icon from '@/components/common/Icon';
 import ThemedText from '@/components/common/Text';
@@ -15,6 +14,7 @@ import ThemedText from '@/components/common/Text';
 /** Home Components */
 import Brands from '@/components/Brands';
 import Categories from '@/components/Categories';
+import Filter from '@/components/Filter';
 import PopularProduct from '@/components/PopularProduct';
 
 /** Hook App Theme */
@@ -22,6 +22,7 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 
 const HomeScreen: FC = () => {
     const navigation = useNavigation();
+    const router = useRouter();
 
     const backgroundColor = useThemeColor({}, 'input');
     const placeholderColor = useThemeColor({}, 'placeholder');
@@ -54,14 +55,18 @@ const HomeScreen: FC = () => {
             </View>
 
             <View style={styles.search}>
-                <TouchableOpacity activeOpacity={0.7} style={[styles.searchButton, { backgroundColor }]}>
+                <TouchableOpacity
+                    activeOpacity={0.7}
+                    onPress={() => router.push('/search')}
+                    style={[styles.searchButton, { backgroundColor }]}
+                >
                     <Icon color={placeholderColor} name={'search-normal'} size={24} />
 
                     <ThemedText style={{ color: placeholderColor }}>{'Search'}</ThemedText>
                 </TouchableOpacity>
 
                 {/** Filter */}
-                <Button icon={<Icon color={'white'} name={'setting-1'} size={24} />} style={styles.filter} />
+                <Filter />
             </View>
 
             <View style={{ marginTop: 20 }}>
@@ -84,10 +89,6 @@ const styles = StyleSheet.create({
         borderRadius: 999,
         height: 40,
         width: 40,
-    },
-    filter: {
-        borderRadius: 12,
-        width: 56,
     },
     header: {
         alignItems: 'flex-start',

@@ -9,6 +9,7 @@ import { Fade, Placeholder, PlaceholderLine } from 'rn-placeholder';
 
 /** App Components */
 import ThemedText from './common/Text';
+import TextButton from './common/TextButton';
 
 /** Product Components */
 import ProductItem from './Product';
@@ -53,10 +54,12 @@ const products = [
     },
 ];
 
-const PopularProductContent: FC = () => {
+const PopularProductContent: FC<{ limit?: number }> = ({ limit }) => {
+    const current = limit ? products.slice(0, limit) : products;
+
     return (
         <View style={styles.container}>
-            {products.map((product) => (
+            {current.map((product) => (
                 <ProductItem key={`ProductPopular-${product.id}`} product={product} style={{ width: PRODUCT_WIDTH }} />
             ))}
         </View>
@@ -66,40 +69,18 @@ const PopularProductContent: FC = () => {
 const PopularProductFallback: FC = () => {
     return (
         <View style={styles.container}>
-            <View style={{ width: PRODUCT_WIDTH }}>
-                <Placeholder Animation={Fade}>
-                    <PlaceholderLine noMargin style={[styles.productItem, { width: PRODUCT_WIDTH }]} />
-                </Placeholder>
-            </View>
-
-            <View style={{ width: PRODUCT_WIDTH }}>
-                <Placeholder Animation={Fade}>
-                    <PlaceholderLine noMargin style={[styles.productItem, { width: PRODUCT_WIDTH }]} />
-                </Placeholder>
-            </View>
-
-            <View style={{ width: PRODUCT_WIDTH }}>
-                <Placeholder Animation={Fade}>
-                    <PlaceholderLine noMargin style={[styles.productItem, { width: PRODUCT_WIDTH }]} />
-                </Placeholder>
-            </View>
-
-            <View style={{ width: PRODUCT_WIDTH }}>
-                <Placeholder Animation={Fade}>
-                    <PlaceholderLine noMargin style={[styles.productItem, { width: PRODUCT_WIDTH }]} />
-                </Placeholder>
-            </View>
-
-            <View style={{ width: PRODUCT_WIDTH }}>
-                <Placeholder Animation={Fade}>
-                    <PlaceholderLine noMargin style={[styles.productItem, { width: PRODUCT_WIDTH }]} />
-                </Placeholder>
-            </View>
+            {[...new Array(6)].map((_, index) => (
+                <View key={`Popular-${index}`} style={{ width: PRODUCT_WIDTH }}>
+                    <Placeholder Animation={Fade}>
+                        <PlaceholderLine noMargin style={[styles.productItem, { width: PRODUCT_WIDTH }]} />
+                    </Placeholder>
+                </View>
+            ))}
         </View>
     );
 };
 
-const PopularProduct: FC = () => {
+const PopularProduct: FC<{ limit?: number }> = ({ limit }) => {
     const [loading, setLoading] = useState<boolean>(false);
 
     useEffect(() => {
@@ -112,9 +93,13 @@ const PopularProduct: FC = () => {
 
     return (
         <View style={{ gap: 20 }}>
-            <ThemedText bold>Popular Products</ThemedText>
+            <View style={styles.label}>
+                <ThemedText bold>Popular Products</ThemedText>
 
-            {loading ? <PopularProductFallback /> : <PopularProductContent />}
+                <TextButton hitSlop={8} title={'View all'} />
+            </View>
+
+            {loading ? <PopularProductFallback /> : <PopularProductContent limit={limit} />}
         </View>
     );
 };
@@ -124,6 +109,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap',
         gap: 20,
+    },
+    label: {
+        alignItems: 'center',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
     },
     productItem: {
         borderRadius: 10,

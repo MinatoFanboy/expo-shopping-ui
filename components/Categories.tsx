@@ -55,35 +55,13 @@ const CategoriesContent: FC = () => {
 const CategoriesFallback: FC = () => {
     return (
         <View style={styles.fallback}>
-            <View style={{ width: 60 }}>
-                <Placeholder Animation={Fade}>
-                    <PlaceholderLine noMargin style={[styles.categoryItem, { width: 60 }]} />
-                </Placeholder>
-            </View>
-
-            <View style={{ width: 60 }}>
-                <Placeholder Animation={Fade}>
-                    <PlaceholderLine noMargin style={[styles.categoryItem, { width: 60 }]} />
-                </Placeholder>
-            </View>
-
-            <View style={{ width: 60 }}>
-                <Placeholder Animation={Fade}>
-                    <PlaceholderLine noMargin style={[styles.categoryItem, { width: 60 }]} />
-                </Placeholder>
-            </View>
-
-            <View style={{ width: 60 }}>
-                <Placeholder Animation={Fade}>
-                    <PlaceholderLine noMargin style={[styles.categoryItem, { width: 60 }]} />
-                </Placeholder>
-            </View>
-
-            <View style={{ width: 60 }}>
-                <Placeholder Animation={Fade}>
-                    <PlaceholderLine noMargin style={[styles.categoryItem, { width: 60 }]} />
-                </Placeholder>
-            </View>
+            {[...new Array(5)].map((_, index) => (
+                <View key={`Category-${index}`} style={{ width: 60 }}>
+                    <Placeholder Animation={Fade}>
+                        <PlaceholderLine noMargin style={[styles.categoryItem, { width: 60 }]} />
+                    </Placeholder>
+                </View>
+            ))}
         </View>
     );
 };

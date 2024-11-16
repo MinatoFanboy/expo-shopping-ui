@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 
 /** React Native */
-import { Dimensions, Image, StyleSheet, TouchableOpacity, View, useColorScheme } from 'react-native';
+import { Dimensions, Image, StyleSheet, View, useColorScheme } from 'react-native';
 const { width } = Dimensions.get('window');
 
 /** Router */
@@ -14,6 +14,8 @@ import OTPInputView from '@twotalltotems/react-native-otp-input';
 import Button from '@/components/common/Button';
 import Container from '@/components/common/Container';
 import ThemedText from '@/components/common/Text';
+import TextButton from '@/components/common/TextButton';
+
 import Header from '@/components/Header';
 
 /** App Colors */
@@ -121,15 +123,11 @@ const Verification: FC = () => {
             <View style={styles.resend}>
                 <ThemedText type={'body2'}>{formatTime(timeLeft)}</ThemedText>
 
-                <TouchableOpacity
-                    activeOpacity={0.7}
+                <TextButton
                     hitSlop={{ bottom: 8, left: 4, right: 8, top: 8 }}
                     onPress={handleResendPin}
-                >
-                    <ThemedText style={{ color: GlobalColors.primary }} type={'body2'}>
-                        Resend
-                    </ThemedText>
-                </TouchableOpacity>
+                    title={'Resend'}
+                />
             </View>
 
             <View style={{ marginTop: 30 }}>

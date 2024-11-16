@@ -9,10 +9,11 @@ import { useRouter } from 'expo-router';
 /** App Components */
 import Button from '@/components/common/Button';
 import Container from '@/components/common/Container';
-import Header from '@/components/Header';
 import Modal from '@/components/common/Modal';
 import TextInput from '@/components/common/TextInput';
 import ThemedText from '@/components/common/Text';
+
+import Header from '@/components/Header';
 
 /** Hook Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';

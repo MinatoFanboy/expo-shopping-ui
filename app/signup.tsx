@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useState } from 'react';
 
 /** React Native */
-import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 
 /** Router */
 import { useRouter } from 'expo-router';
@@ -13,6 +13,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Button from '@/components/common/Button';
 import Container from '@/components/common/Container';
 import SocialButton from '@/components/common/SocialButton';
+import TextButton from '@/components/common/TextButton';
 import TextInput from '@/components/common/TextInput';
 import ThemedText from '@/components/common/Text';
 
@@ -42,6 +43,10 @@ const SignupScreen: FC = () => {
         password: '',
     });
     const [loading, setLoading] = useState<boolean>(false);
+
+    const handleLogin = useCallback(() => {
+        router.push('/login');
+    }, []);
 
     const onChangeForm = useCallback(
         ({ name, value }: { name: 'confirmPassword' | 'email' | 'name' | 'password'; value: string }) => {
@@ -167,15 +172,12 @@ const SignupScreen: FC = () => {
 
                     <View style={styles.signUp}>
                         <ThemedText type={'body2'}>{'Already have an account?'}</ThemedText>
-                        <TouchableOpacity
-                            activeOpacity={0.7}
-                            hitSlop={{ bottom: 4, left: 4, right: 4, top: 4 }}
-                            onPress={() => router.back()}
-                        >
-                            <ThemedText style={{ color: GlobalColors.primary }} type={'body2'}>
-                                Login
-                            </ThemedText>
-                        </TouchableOpacity>
+
+                        <TextButton
+                            hitSlop={{ bottom: 8, left: 4, right: 8, top: 8 }}
+                            onPress={handleLogin}
+                            title={'Signup'}
+                        />
                     </View>
                 </View>
             </View>

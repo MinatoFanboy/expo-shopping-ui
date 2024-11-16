@@ -95,6 +95,10 @@ export const GlobalColors = {
     black: dark500,
     error: '#FF7F74',
     gray: gray10P,
+    option1,
+    option2,
+    option3,
+    option4,
     primary: primary500,
     primary600: primary600,
     white: white500,
@@ -104,6 +108,7 @@ export const ThemeColors = {
     dark: {
         background1: dark500,
         background2: '#1D2221',
+        background3: '#161D1D',
         border: '#2C302F',
         buttonFocused: dark10P,
         dot: '#515555',
@@ -117,6 +122,7 @@ export const ThemeColors = {
     light: {
         background1: white500,
         background2: gray10P,
+        background3: primary10p,
         border: gray20P,
         buttonFocused: gray10P,
         dot: gray20P,

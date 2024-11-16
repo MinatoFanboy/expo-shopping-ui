@@ -1,7 +1,7 @@
 import React, { FC, useCallback, useEffect, useState } from 'react';
 
 /** React Native */
-import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 
 /** Router */
 import { useNavigation, useRouter } from 'expo-router';
@@ -13,6 +13,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Button from '@/components/common/Button';
 import Container from '@/components/common/Container';
 import SocialButton from '@/components/common/SocialButton';
+import TextButton from '@/components/common/TextButton';
 import TextInput from '@/components/common/TextInput';
 import ThemedText from '@/components/common/Text';
 
@@ -33,6 +34,11 @@ const LoginScreen: FC = () => {
 
     const [error, setError] = useState<{ email: string; password: string }>({ email: '', password: '' });
     const [form, setForm] = useState<{ email: string; password: string }>({ email: '', password: '' });
+
+    const handleNavigate = useCallback((route: '/signup' | '/forgotPassword') => {
+        router.push(route);
+    }, []);
+
     const [loading, setLoading] = useState<boolean>(false);
 
     const onChangeForm = useCallback(({ name, value }: { name: 'email' | 'password'; value: string }) => {
@@ -123,15 +129,11 @@ const LoginScreen: FC = () => {
 
                         {/** Forgot Password */}
                         <View style={styles.forgotPassword}>
-                            <TouchableOpacity
-                                activeOpacity={0.7}
-                                onPress={() => router.push('/forgotPassword')}
+                            <TextButton
                                 hitSlop={{ bottom: 10, left: 20, right: 10, top: 10 }}
-                            >
-                                <ThemedText style={{ color: GlobalColors.primary }} type={'body2'}>
-                                    Forgot Password
-                                </ThemedText>
-                            </TouchableOpacity>
+                                onPress={() => handleNavigate('/forgotPassword')}
+                                title={'Forgot Password'}
+                            />
                         </View>
                     </View>
 
@@ -157,15 +159,12 @@ const LoginScreen: FC = () => {
 
                     <View style={styles.signUp}>
                         <ThemedText type={'body2'}>{'First time here?'}</ThemedText>
-                        <TouchableOpacity
-                            activeOpacity={0.7}
-                            hitSlop={{ bottom: 4, left: 4, right: 4, top: 4 }}
-                            onPress={() => router.push('/signup')}
-                        >
-                            <ThemedText style={{ color: GlobalColors.primary }} type={'body2'}>
-                                Signup
-                            </ThemedText>
-                        </TouchableOpacity>
+
+                        <TextButton
+                            hitSlop={{ bottom: 8, left: 4, right: 8, top: 8 }}
+                            onPress={() => handleNavigate('/signup')}
+                            title={'Signup'}
+                        />
                     </View>
                 </View>
             </View>
