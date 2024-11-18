@@ -1,8 +1,7 @@
 import React, { FC, memo } from 'react';
 
 /** React Native */
-import { Dimensions, StyleSheet, View } from 'react-native';
-const width = Dimensions.get('window').width;
+import { StyleSheet, View } from 'react-native';
 
 /** Sliders */
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
@@ -15,6 +14,9 @@ import { GlobalColors } from '@/constants/Colors';
 
 /** Hook Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
+
+/** Constants */
+import { dimension } from '@/constants/Constants';
 
 interface TwoPointSliderProps {
     max?: number;
@@ -49,7 +51,7 @@ const TwoPointSlider: FC<TwoPointSliderProps> = ({ max, min, onValuesChange, pos
             onValuesChange={onValuesChange}
             selectedStyle={{ backgroundColor: GlobalColors.primary, height: 4 }}
             step={10}
-            sliderLength={width - 40}
+            sliderLength={dimension.WIDTH - 40}
             trackStyle={{ backgroundColor, borderRadius: 2, height: 4 }}
             values={values}
         />

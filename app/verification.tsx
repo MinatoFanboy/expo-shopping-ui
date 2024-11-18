@@ -1,8 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 
 /** React Native */
-import { Dimensions, Image, StyleSheet, View, useColorScheme } from 'react-native';
-const { width } = Dimensions.get('window');
+import { Image, StyleSheet, View, useColorScheme } from 'react-native';
 
 /** Router */
 import { useRouter } from 'expo-router';
@@ -26,6 +25,9 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 
 /** Dimension */
 import { hp, wait } from '@/helpers/common';
+
+/** Constants */
+import { dimension } from '@/constants/Constants';
 
 const Verification: FC = () => {
     const router = useRouter();
@@ -108,15 +110,15 @@ const Verification: FC = () => {
                         color: GlobalColors.primary,
                         fontWeight: 'bold',
                         fontSize: 20,
-                        height: width / 5.5,
-                        width: width / 5.5,
+                        height: dimension.WIDTH / 5.5,
+                        width: dimension.WIDTH / 5.5,
                     }}
                     codeInputHighlightStyle={{
                         borderColor: GlobalColors.primary,
                     }}
                     onCodeFilled={(code) => onFinishCode(code)}
                     pinCount={4}
-                    style={{ height: width / 5.5 }}
+                    style={{ height: dimension.WIDTH / 5.5 }}
                 />
             </View>
 

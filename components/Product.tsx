@@ -3,6 +3,9 @@ import React, { FC } from 'react';
 /** React Native */
 import { Image, ImageRequireSource, StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
 
+/** Router */
+import { useRouter } from 'expo-router';
+
 /** App Components */
 import ThemedText from './common/Text';
 import Icon from './common/Icon';
@@ -17,7 +20,7 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 import { hp } from '@/helpers/common';
 
 interface ProductProps {
-    product: { image: ImageRequireSource; price: string; title: string; type: string };
+    product: { id: number; image: ImageRequireSource; price: string; title: string; type: string };
     style?: StyleProp<ViewStyle>;
 }
 
@@ -25,8 +28,16 @@ const Product: FC<ProductProps> = ({ product, style }) => {
     const iconColor = useThemeColor({}, 'text2');
     const backgroundColor = useThemeColor({}, 'background1');
 
+    const router = useRouter();
+
     return (
-        <TouchableOpacity activeOpacity={0.7} style={[styles.container, { backgroundColor }, style]}>
+        <TouchableOpacity
+            activeOpacity={0.7}
+            onPress={() => {
+                router.push({ pathname: '/productDetail', params: { productId: product.id } });
+            }}
+            style={[styles.container, { backgroundColor }, style]}
+        >
             <Image resizeMode={'cover'} source={product.image} style={styles.thumbnail} />
 
             <View style={{ gap: 5 }}>

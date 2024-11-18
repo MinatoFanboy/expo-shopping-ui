@@ -1,8 +1,7 @@
 import React, { FC, memo, useCallback, useRef } from 'react';
 
 /** React Native */
-import { Dimensions, StyleSheet, TouchableOpacity, View } from 'react-native';
-const height = Dimensions.get('window').height;
+import { StyleSheet, TouchableOpacity, View } from 'react-native';
 
 /** App Components */
 import Button from './common/Button';
@@ -16,6 +15,9 @@ import { GlobalColors } from '@/constants/Colors';
 
 /** Hook Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
+
+/** Constants */
+import { dimension } from '@/constants/Constants';
 
 const categories = ['All', "Men's", "Women's", "Kid's"];
 const colors = [GlobalColors.option3, GlobalColors.black, GlobalColors.option4, GlobalColors.option1];
@@ -41,7 +43,7 @@ const Filter: FC = () => {
                 style={styles.filter}
             />
 
-            <RBSheet draggable ref={ref} height={height * 0.8} openDuration={250} useNativeDriver={false}>
+            <RBSheet draggable ref={ref} height={dimension.HEIGHT * 0.8} openDuration={250} useNativeDriver={false}>
                 <View style={styles.container}>
                     <ThemedText bold type={'body1'}>
                         Filter
@@ -163,7 +165,9 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         borderRadius: 999,
         flexDirection: 'row',
+        justifyContent: 'center',
         gap: 13,
+        minWidth: 40,
         padding: 10,
     },
     colorItem: {

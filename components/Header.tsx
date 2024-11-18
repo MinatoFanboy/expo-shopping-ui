@@ -15,7 +15,11 @@ const Header: FC<{ title?: string }> = ({ title }) => {
 
     return (
         <View style={styles.container}>
-            {title ? <ThemedText style={styles.header}>{title}</ThemedText> : null}
+            {title ? (
+                <ThemedText bold style={styles.header}>
+                    {title}
+                </ThemedText>
+            ) : null}
 
             <TouchableOpacity
                 activeOpacity={0.7}

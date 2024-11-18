@@ -1,6 +1,11 @@
+import { Dimensions } from 'react-native';
+const { height, width } = Dimensions.get('window');
+
 interface ImageMap {
     [key: string]: any;
 }
+
+export const dimension = { HEIGHT: height, PRODUCT_WIDTH: (width - 61) / 2, WIDTH: width };
 
 export const imageMap: ImageMap = {
     product1: require('@/assets/images/product/product-1.png'),

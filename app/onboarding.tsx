@@ -1,8 +1,9 @@
 import React, { FC, useCallback, useEffect, useRef, useState } from 'react';
 
 /** React Native */
-import { Animated, Dimensions, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-const { width } = Dimensions.get('window');
+import { Animated, FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+
+/** Status Bar */
 import { setStatusBarStyle } from 'expo-status-bar';
 
 /** Blur */
@@ -23,7 +24,7 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 
 /** Constants */
 import { GlobalColors } from '@/constants/Colors';
-import { imageMap } from '@/constants/Constants';
+import { dimension, imageMap } from '@/constants/Constants';
 
 /** DATA */
 import onboardingData from '@/mocks/onboarding.json';
@@ -39,7 +40,7 @@ const OnboardingScreen: FC = () => {
 
     /** Animated */
     const scrollX = useRef<Animated.Value>(new Animated.Value(0)).current;
-    const dotPosition = Animated.divide(scrollX, width);
+    const dotPosition = Animated.divide(scrollX, dimension.WIDTH);
 
     /** FlatList */
     const currentIndex = useRef(0);
@@ -50,8 +51,8 @@ const OnboardingScreen: FC = () => {
         if (currentIndex.current < onboardingData.length - 1) {
             currentIndex.current += 1;
             const nextIndex = currentIndex.current;
-            const offset = nextIndex * width;
-            const titleOffset = nextIndex * (width - 80);
+            const offset = nextIndex * dimension.WIDTH;
+            const titleOffset = nextIndex * (dimension.WIDTH - 80);
 
             screenFlatListRef.current?.scrollToOffset({ animated: true, offset });
             titleFlatListRef.current?.scrollToOffset({ animated: true, offset: titleOffset });
@@ -86,13 +87,19 @@ const OnboardingScreen: FC = () => {
                 pagingEnabled
                 ref={screenFlatListRef}
                 renderItem={({ item }) => {
-                    return <Image resizeMode={'contain'} source={imageMap[item.image]} style={{ width }} />;
+                    return (
+                        <Image
+                            resizeMode={'contain'}
+                            source={imageMap[item.image]}
+                            style={{ width: dimension.WIDTH }}
+                        />
+                    );
                 }}
                 scrollEnabled={false}
                 scrollEventThrottle={16}
                 showsHorizontalScrollIndicator={false}
                 snapToAlignment={'center'}
-                snapToInterval={width}
+                snapToInterval={dimension.WIDTH}
                 style={{ flex: 1 }}
             />
 
@@ -108,7 +115,7 @@ const OnboardingScreen: FC = () => {
                     ref={titleFlatListRef}
                     renderItem={({ item }) => {
                         return (
-                            <View style={[styles.titleWrapper, { width: width - 80 }]}>
+                            <View style={[styles.titleWrapper, { width: dimension.WIDTH - 80 }]}>
                                 <HighlightText bold style={styles.textCenter} type={'header5'}>
                                     {item.title}
                                 </HighlightText>
@@ -122,7 +129,7 @@ const OnboardingScreen: FC = () => {
                     scrollEnabled={false}
                     showsHorizontalScrollIndicator={false}
                     snapToAlignment={'center'}
-                    snapToInterval={width - 80}
+                    snapToInterval={dimension.WIDTH - 80}
                 />
 
                 {/** Indicator */}

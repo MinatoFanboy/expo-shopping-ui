@@ -1,11 +1,10 @@
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC, useCallback, useEffect, useState } from 'react';
 
 /** React Native */
-import { Dimensions, StyleSheet, View } from 'react-native';
-const PRODUCT_WIDTH = (Dimensions.get('window').width - 61) / 2;
+import { StyleSheet, View } from 'react-native';
 
-/** Placeholder */
-import { Fade, Placeholder, PlaceholderLine } from 'rn-placeholder';
+/** Router */
+import { useRouter } from 'expo-router';
 
 /** App Components */
 import ThemedText from './common/Text';
@@ -13,9 +12,13 @@ import TextButton from './common/TextButton';
 
 /** Product Components */
 import ProductItem from './Product';
+import { ProductSkeleton } from './Skeleton';
 
 /** Async */
 import { wait } from '@/helpers/common';
+
+/** Constants */
+import { dimension } from '@/constants/Constants';
 
 const getPopularProducts = async () => {
     await wait(500);
@@ -60,28 +63,23 @@ const PopularProductContent: FC<{ limit?: number }> = ({ limit }) => {
     return (
         <View style={styles.container}>
             {current.map((product) => (
-                <ProductItem key={`ProductPopular-${product.id}`} product={product} style={{ width: PRODUCT_WIDTH }} />
-            ))}
-        </View>
-    );
-};
-
-const PopularProductFallback: FC = () => {
-    return (
-        <View style={styles.container}>
-            {[...new Array(6)].map((_, index) => (
-                <View key={`Popular-${index}`} style={{ width: PRODUCT_WIDTH }}>
-                    <Placeholder Animation={Fade}>
-                        <PlaceholderLine noMargin style={[styles.productItem, { width: PRODUCT_WIDTH }]} />
-                    </Placeholder>
-                </View>
+                <ProductItem
+                    key={`ProductPopular-${product.id}`}
+                    product={product}
+                    style={{ width: dimension.PRODUCT_WIDTH }}
+                />
             ))}
         </View>
     );
 };
 
 const PopularProduct: FC<{ limit?: number }> = ({ limit }) => {
+    const router = useRouter();
     const [loading, setLoading] = useState<boolean>(false);
+
+    const showAll = useCallback(() => {
+        router.push('/product');
+    }, []);
 
     useEffect(() => {
         setLoading(true);
@@ -96,10 +94,10 @@ const PopularProduct: FC<{ limit?: number }> = ({ limit }) => {
             <View style={styles.label}>
                 <ThemedText bold>Popular Products</ThemedText>
 
-                <TextButton hitSlop={8} title={'View all'} />
+                <TextButton hitSlop={8} onPress={showAll} title={'View all'} />
             </View>
 
-            {loading ? <PopularProductFallback /> : <PopularProductContent limit={limit} />}
+            {loading ? <ProductSkeleton /> : <PopularProductContent limit={limit} />}
         </View>
     );
 };

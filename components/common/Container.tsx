@@ -1,7 +1,7 @@
 import React, { FC, PropsWithChildren, ReactNode } from 'react';
 
 /** React Native */
-import { ScrollView, StyleSheet, View } from 'react-native';
+import { ScrollView, StyleProp, StyleSheet, View, ViewStyle } from 'react-native';
 
 /** Safe Area */
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
@@ -20,6 +20,7 @@ interface ContainerProps {
     header?: ReactNode;
     keyboard?: boolean;
     scroll?: boolean;
+    style?: StyleProp<ViewStyle>;
 }
 
 const Container: FC<PropsWithChildren<ContainerProps>> = ({
@@ -28,6 +29,7 @@ const Container: FC<PropsWithChildren<ContainerProps>> = ({
     header,
     keyboard = false,
     scroll = false,
+    style,
 }) => {
     const { bottom, top } = useSafeAreaInsets();
     const paddingTop = top > 0 ? top : 24;
@@ -37,7 +39,7 @@ const Container: FC<PropsWithChildren<ContainerProps>> = ({
         <ThemedView
             style={[
                 styles.container,
-                { paddingTop },
+                { paddingBottom, paddingTop },
                 keyboard || scroll ? undefined : { backgroundColor: GlobalColors.white },
             ]}
         >
@@ -47,7 +49,7 @@ const Container: FC<PropsWithChildren<ContainerProps>> = ({
                 <>
                     {keyboard ? (
                         <KeyboardAwareScrollView
-                            contentContainerStyle={{ flexGrow: 1, paddingBottom, paddingHorizontal: 20 }}
+                            contentContainerStyle={[{ flexGrow: 1, paddingHorizontal: 20 }, style]}
                             showsVerticalScrollIndicator={false}
                             style={styles.container}
                         >
@@ -55,7 +57,7 @@ const Container: FC<PropsWithChildren<ContainerProps>> = ({
                         </KeyboardAwareScrollView>
                     ) : (
                         <ScrollView
-                            contentContainerStyle={{ flexGrow: 1, paddingBottom, paddingHorizontal: 20 }}
+                            contentContainerStyle={[{ flexGrow: 1, paddingHorizontal: 20 }, style]}
                             style={styles.container}
                         >
                             {children}
@@ -63,7 +65,7 @@ const Container: FC<PropsWithChildren<ContainerProps>> = ({
                     )}
                 </>
             ) : (
-                <View style={[styles.container, { paddingBottom, paddingHorizontal: 20 }]}>{children}</View>
+                <View style={[styles.container, { paddingHorizontal: 20 }, style]}>{children}</View>
             )}
 
             {footer}
