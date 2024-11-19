@@ -11,6 +11,7 @@ export type TextProps = RnTextProps & {
     color?: 'text1' | 'text2';
     darkColor?: string;
     lightColor?: string;
+    semibold?: boolean;
     type?:
         | 'default'
         | 'header1'
@@ -26,7 +27,16 @@ export type TextProps = RnTextProps & {
         | 'label';
 };
 
-const Text: FC<TextProps> = ({ bold, color = 'text1', darkColor, lightColor, style, type = 'default', ...rest }) => {
+const Text: FC<TextProps> = ({
+    bold,
+    color = 'text1',
+    darkColor,
+    lightColor,
+    semibold,
+    style,
+    type = 'default',
+    ...rest
+}) => {
     const textColor = useThemeColor({ light: lightColor, dark: darkColor }, color);
 
     return (
@@ -34,6 +44,7 @@ const Text: FC<TextProps> = ({ bold, color = 'text1', darkColor, lightColor, sty
             style={[
                 { color: textColor, fontFamily: 'Poppins-Regular' },
                 bold ? styles.bold : undefined,
+                semibold ? styles.semibold : undefined,
                 /** Font Style */
                 type === 'default' ? styles.default : undefined,
                 /** Header */
@@ -106,6 +117,9 @@ const styles = StyleSheet.create({
     label: {
         fontSize: 11,
         lineHeight: 16,
+    },
+    semibold: {
+        fontFamily: 'Poppins-Semibold',
     },
 });
 

@@ -8,7 +8,6 @@ import { useLocalSearchParams } from 'expo-router';
 
 /** App Components */
 import Button from '@/components/common/Button';
-import Container from '@/components/common/Container';
 import Icon from '@/components/common/Icon';
 import Loading from '@/components/common/Loading';
 import ThemedText from '@/components/common/Text';
@@ -16,7 +15,7 @@ import ThemedView from '@/components/common/View';
 import Ratings from '@/components/common/Ratings';
 
 import AnimatedText from '@/components/AnimatedText';
-import Header from '@/components/Header';
+import ParallaxContainer from '@/components/ParallaxContainer';
 
 /** Hook Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
@@ -27,7 +26,6 @@ import { GlobalColors } from '@/constants/Colors';
 const ProductDetailPage: FC = () => {
     const { productId } = useLocalSearchParams();
 
-    const separateBackgroundColor = useThemeColor({}, 'background2');
     const backgroundColor = useThemeColor({}, 'background3');
     const borderColor = useThemeColor({}, 'border');
 
@@ -43,7 +41,7 @@ const ProductDetailPage: FC = () => {
     }
 
     return (
-        <Container
+        <ParallaxContainer
             footer={
                 <ThemedView style={styles.footer}>
                     <TouchableOpacity activeOpacity={0.7} style={[styles.favorite, { backgroundColor }]}>
@@ -57,13 +55,11 @@ const ProductDetailPage: FC = () => {
                     />
                 </ThemedView>
             }
-            scroll
             style={{ paddingHorizontal: 0 }}
+            title={'Product Detail'}
         >
             {/** Image */}
-            <View style={[styles.header, { backgroundColor }]}>
-                <Header title={'Product Details'} />
-
+            <ThemedView background={'background3'} style={styles.header}>
                 <View style={{ flex: 1 }}>
                     <Image
                         resizeMode={'contain'}
@@ -71,9 +67,9 @@ const ProductDetailPage: FC = () => {
                         style={styles.avatar}
                     />
                 </View>
-            </View>
+            </ThemedView>
 
-            <View style={{ padding: 20 }}>
+            <ThemedView style={{ padding: 20 }}>
                 {/** Ratings & Add to cart */}
                 <View style={styles.row}>
                     <Ratings rate={4.5} />
@@ -111,7 +107,7 @@ const ProductDetailPage: FC = () => {
                     $250
                 </ThemedText>
 
-                <View style={[styles.separate, { backgroundColor: separateBackgroundColor }]} />
+                <ThemedView background={'background2'} style={styles.separate} />
 
                 <ThemedText bold>Description</ThemedText>
 
@@ -126,7 +122,7 @@ const ProductDetailPage: FC = () => {
                     ultricies. Praesent non varius mi. Sed vel aliquam felis.
                 </AnimatedText>
 
-                <View style={[styles.separate, { backgroundColor: separateBackgroundColor }]} />
+                <ThemedView background={'background2'} style={styles.separate} />
 
                 <ThemedText bold>Select Size</ThemedText>
 
@@ -148,8 +144,8 @@ const ProductDetailPage: FC = () => {
                         </TouchableOpacity>
                     ))}
                 </View>
-            </View>
-        </Container>
+            </ThemedView>
+        </ParallaxContainer>
     );
 };
 
@@ -181,12 +177,14 @@ const styles = StyleSheet.create({
     footer: {
         flexDirection: 'row',
         gap: 10,
+        paddingBottom: 34,
         paddingHorizontal: 20,
-        paddingVertical: 10,
+        paddingTop: 10,
     },
     header: {
         aspectRatio: 1,
-        borderRadius: 16,
+        borderBottomLeftRadius: 16,
+        borderBottomRightRadius: 16,
         overflow: 'hidden',
         width: '100%',
     },

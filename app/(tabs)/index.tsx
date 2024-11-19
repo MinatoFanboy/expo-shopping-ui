@@ -36,7 +36,7 @@ const HomeScreen: FC = () => {
     }, []);
 
     return (
-        <Container scroll>
+        <Container scroll style={{ paddingBottom: 20 }}>
             {/** Greeting */}
             <View style={styles.header}>
                 <View style={styles.headerLeft}>

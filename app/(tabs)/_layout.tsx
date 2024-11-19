@@ -11,8 +11,6 @@ export default function TabLayout() {
         <Tabs tabBar={(props) => <TabBar {...props} />} screenOptions={{ headerShown: false }}>
             <Tabs.Screen name="index" options={{ title: 'Home' }} />
             <Tabs.Screen name="favorite" options={{ title: 'My Favorite' }} />
-            <Tabs.Screen name="cart" options={{ href: null, title: 'My Cart' }} />
-            <Tabs.Screen name="notification" options={{ href: null, title: 'Notifications' }} />
         </Tabs>
     );
 }

@@ -24,6 +24,13 @@ import { useThemeColor } from '@/hooks/useThemeColor';
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';
 
+const screens = [
+    { icon: 'index', id: 1, name: 'index' },
+    { icon: 'favorite', id: 2, name: 'favorite' },
+    { icon: 'cart', id: 3, name: 'cart' },
+    { icon: 'notification', id: 4, name: 'notification' },
+];
+
 const TabBar: FC<BottomTabBarProps> = ({ descriptors, navigation, state }) => {
     const { bottom } = useSafeAreaInsets();
     const paddingBottom = bottom > 0 ? bottom : 24;
@@ -40,40 +47,35 @@ const TabBar: FC<BottomTabBarProps> = ({ descriptors, navigation, state }) => {
 
     return (
         <BlurView intensity={10} style={{ backgroundColor: background, flexDirection: 'row', paddingBottom }}>
-            {state.routes.map((route, index) => {
-                const { options } = descriptors[route.key];
-
+            {screens.map((route, index) => {
                 const isFocused = state.index === index;
 
                 const onPress = () => {
                     const event = navigation.emit({
                         type: 'tabPress',
-                        target: route.key,
                         canPreventDefault: true,
                     });
 
                     if (!isFocused && !event.defaultPrevented) {
-                        navigation.navigate(route.name, route.params);
+                        navigation.navigate(route.name);
                     }
                 };
 
                 const onLongPress = () => {
                     navigation.emit({
                         type: 'tabLongPress',
-                        target: route.key,
                     });
                 };
 
                 return (
                     <TouchableOpacity
-                        accessibilityLabel={options.tabBarAccessibilityLabel}
                         accessibilityRole={'button'}
                         accessibilityState={isFocused ? { selected: true } : {}}
+                        activeOpacity={0.9}
                         key={`TabBar-${index}`}
                         onPress={onPress}
                         onLongPress={onLongPress}
                         style={styles.tabBarItem}
-                        testID={options.tabBarTestID}
                     >
                         {isFocused ? (
                             <View style={[styles.rectangle]}>
@@ -104,7 +106,7 @@ const TabBar: FC<BottomTabBarProps> = ({ descriptors, navigation, state }) => {
                             <View style={[styles.indicator, { backgroundColor: GlobalColors.primary }]} />
                         ) : null}
 
-                        {icons[route.name as keyof typeof icons]({ color: isFocused ? GlobalColors.primary : color })}
+                        {icons[route.icon as keyof typeof icons]({ color: isFocused ? GlobalColors.primary : color })}
                     </TouchableOpacity>
                 );
             })}

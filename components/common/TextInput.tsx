@@ -4,9 +4,11 @@ import React, { FC, memo, useState } from 'react';
 import {
     TextInput as RnTextInput,
     TextInputProps as RnTextInputProps,
+    StyleProp,
     StyleSheet,
     TouchableOpacity,
     View,
+    ViewStyle,
 } from 'react-native';
 
 /** App Components */
@@ -20,12 +22,23 @@ import { GlobalColors } from '@/constants/Colors';
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 export type TextInputProps = RnTextInputProps & {
+    containerStyle?: StyleProp<ViewStyle>;
     error?: string;
     secureTextEntry?: boolean;
     icon?: string;
+    wrapperStyle?: StyleProp<ViewStyle>;
 };
 
-const TextInput: FC<TextInputProps> = ({ error, icon, secureTextEntry, value, ...rest }) => {
+const TextInput: FC<TextInputProps> = ({
+    containerStyle,
+    error,
+    icon,
+    secureTextEntry,
+    style,
+    value,
+    wrapperStyle,
+    ...rest
+}) => {
     const [isFocused, setIsFocused] = useState<boolean>(false);
     const [isShowPassword, setIsShowPassword] = useState<boolean>(true);
 
@@ -34,7 +47,7 @@ const TextInput: FC<TextInputProps> = ({ error, icon, secureTextEntry, value, ..
     const placeholderColor = useThemeColor({}, 'placeholder');
 
     return (
-        <View style={{ gap: 8 }}>
+        <View style={[{ gap: 8 }, wrapperStyle]}>
             <View
                 style={[
                     styles.container,
@@ -46,6 +59,7 @@ const TextInput: FC<TextInputProps> = ({ error, icon, secureTextEntry, value, ..
                             ? GlobalColors.primary
                             : backgroundColor,
                     },
+                    containerStyle,
                 ]}
             >
                 {icon && (
@@ -59,7 +73,7 @@ const TextInput: FC<TextInputProps> = ({ error, icon, secureTextEntry, value, ..
                     placeholderTextColor={placeholderColor}
                     secureTextEntry={secureTextEntry ? isShowPassword : false}
                     selectionColor={GlobalColors.primary}
-                    style={[styles.input, { color }]}
+                    style={[styles.input, { color }, style]}
                     value={value}
                     {...rest}
                 />
