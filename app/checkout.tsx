@@ -1,11 +1,14 @@
-import React, { FC } from 'react';
+import React, { FC, useCallback } from 'react';
 
 /** React Native */
 import { Image, StyleSheet, TouchableOpacity, View } from 'react-native';
 
+/** Router */
+import { useRouter } from 'expo-router';
+
 /** App Components */
-import Container from '@/components/common/Container';
 import Button from '@/components/common/Button';
+import Container from '@/components/common/Container';
 import Icon from '@/components/common/Icon';
 import ThemedText from '@/components/common/Text';
 import TextInput from '@/components/common/TextInput';
@@ -17,11 +20,17 @@ import Header from '@/components/Header';
 import { GlobalColors } from '@/constants/Colors';
 
 const CheckoutScreen: FC = () => {
+    const router = useRouter();
+
+    const onNext = useCallback(() => {
+        router.push('/shippingAddress');
+    }, []);
+
     return (
         <Container
             footer={
                 <View style={{ paddingHorizontal: 20 }}>
-                    <Button title={'Pay Now'} />
+                    <Button onPress={onNext} title={'Pay Now'} />
                 </View>
             }
             header={<Header title={'Checkout'} />}
