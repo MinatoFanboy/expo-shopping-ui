@@ -19,7 +19,7 @@ import {
 /** Blur */
 import { BlurView } from 'expo-blur';
 
-/** Hook Theme */
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 interface RBSheetProps {

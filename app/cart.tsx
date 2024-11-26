@@ -13,49 +13,22 @@ import { SwipeListView } from 'react-native-swipe-list-view';
 import Button from '@/components/common/Button';
 import Container from '@/components/common/Container';
 import Icon from '@/components/common/Icon';
-import ThemedText from '@/components/common/Text';
-import ThemedView from '@/components/common/View';
+import ThemedText from '@/components/common/ThemedText';
+import ThemedView from '@/components/common/ThemedView';
 
 import Header from '@/components/Header';
 
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';
 
-/** Hook Colors */
+/** Constants */
+import { imageMap } from '@/constants/Constants';
+
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 
-const carts = [
-    {
-        id: 1,
-        image: require('@/assets/images/product/product-1.png'),
-        key: 0,
-        price: '$250',
-        quantity: 1,
-        size: 'L',
-        title: 'Dennis Lingo',
-        type: 'Hazy Rose',
-    },
-    {
-        id: 2,
-        image: require('@/assets/images/product/product-5.png'),
-        key: 1,
-        price: '$200',
-        quantity: 1,
-        size: 'L',
-        title: 'Red Cotton Shirt',
-        type: 'Hazy Rose',
-    },
-    {
-        id: 3,
-        image: require('@/assets/images/product/product-8.png'),
-        key: 2,
-        price: '$280',
-        quantity: 1,
-        size: 'L',
-        title: 'Leather Jacket',
-        type: 'Hazy Rose',
-    },
-];
+/** DATA */
+import cartData from '@/mocks/cart.json';
 
 const CartScreen: FC = () => {
     const placeholderColor = useThemeColor({}, 'placeholder');
@@ -72,12 +45,12 @@ const CartScreen: FC = () => {
         <Container header={<Header title={'My Cart'} />} keyboard style={{ paddingHorizontal: 0 }}>
             <SwipeListView
                 contentContainerStyle={styles.container}
-                data={carts}
+                data={cartData}
                 leftOpenValue={0}
                 renderItem={(data, rowMap) => (
                     <ThemedView style={styles.cartItem}>
                         <ThemedView background={'background2'} style={styles.cartImage}>
-                            <Image resizeMode={'contain'} source={data.item.image} style={styles.cartImage} />
+                            <Image resizeMode={'contain'} source={imageMap[data.item.image]} style={styles.cartImage} />
                         </ThemedView>
 
                         <View style={{ flex: 1, gap: 2 }}>

@@ -13,50 +13,8 @@ import { ProductSkeleton } from '@/components/Skeleton';
 /** Async */
 import { wait } from '@/helpers/common';
 
-const products = [
-    {
-        id: 1,
-        image: require('@/assets/images/product/product-1.png'),
-        price: '$250',
-        title: 'Dennis Lingo',
-        type: 'Hazy Rose',
-    },
-    {
-        id: 2,
-        image: require('@/assets/images/product/product-4.png'),
-        price: '$140',
-        title: 'Fancy Shirt',
-        type: 'Hazy Rose',
-    },
-    {
-        id: 3,
-        image: require('@/assets/images/product/product-5.png'),
-        price: '$200',
-        title: 'Red Cotton Shirt',
-        type: 'Hazy Rose',
-    },
-    {
-        id: 4,
-        image: require('@/assets/images/product/product-6.png'),
-        price: '$300',
-        title: 'Byuin T-Shirt',
-        type: 'Hazy Rose',
-    },
-    {
-        id: 5,
-        image: require('@/assets/images/product/product-7.png'),
-        price: '$230',
-        title: 'Trucker Jacket',
-        type: 'Hazy Rose',
-    },
-    {
-        id: 6,
-        image: require('@/assets/images/product/product-8.png'),
-        price: '$280',
-        title: 'Leather Jacket',
-        type: 'Hazy Rose',
-    },
-];
+/** DATA */
+import productData from '@/mocks/product.json';
 
 const getProducts = async () => {
     await wait(500);
@@ -68,7 +26,7 @@ const ProductContent: FC = () => {
     return (
         <FlatList
             contentContainerStyle={{ gap: 20, padding: 20 }}
-            data={products}
+            data={productData}
             keyExtractor={(item) => `Product-${item.id}`}
             numColumns={2}
             renderItem={({ index, item }) => (

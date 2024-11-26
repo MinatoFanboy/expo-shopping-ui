@@ -7,12 +7,12 @@ import { FlatList, StyleSheet, TouchableOpacity, View } from 'react-native';
 import { Fade, Placeholder, PlaceholderLine } from 'rn-placeholder';
 
 /** App Components */
-import ThemedText from './common/Text';
+import ThemedText from './common/ThemedText';
 
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';
 
-/** Hook Theme */
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 /** Async */

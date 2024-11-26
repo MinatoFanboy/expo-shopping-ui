@@ -4,9 +4,9 @@ import React, { FC } from 'react';
 import { StyleSheet, TouchableOpacity } from 'react-native';
 
 /** App Components */
-import ThemedText from './common/Text';
+import ThemedText from './common/ThemedText';
 
-/** Hook Theme */
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 import Icon from './common/Icon';
 

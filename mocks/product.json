@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "image": "product1",
+        "price": "$250",
+        "title": "Dennis Lingo",
+        "type": "Hazy Rose"
+    },
+    {
+        "id": 2,
+        "image": "product3",
+        "price": "$140",
+        "title": "Marks & Spencer",
+        "type": "Hazy Rose"
+    },
+    {
+        "id": 3,
+        "image": "product2",
+        "price": "$200",
+        "title": "Trucker Jacket",
+        "type": "Hazy Rose"
+    },
+    {
+        "id": 4,
+        "image": "product9",
+        "price": "$300",
+        "title": "Hooded Jacket",
+        "type": "Hazy Rose"
+    }
+]

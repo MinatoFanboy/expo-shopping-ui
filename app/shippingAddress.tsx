@@ -10,15 +10,15 @@ import { useRouter } from 'expo-router';
 import Button from '@/components/common/Button';
 import Container from '@/components/common/Container';
 import Icon from '@/components/common/Icon';
-import ThemedText from '@/components/common/Text';
-import ThemedView from '@/components/common/View';
+import ThemedText from '@/components/common/ThemedText';
+import ThemedView from '@/components/common/ThemedView';
 
 import Header from '@/components/Header';
 
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';
 
-/** Hook Colors */
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 const ShippingAddressScreen: FC = () => {

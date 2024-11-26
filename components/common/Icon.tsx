@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
 /** React Native */
-import { StyleProp, ViewStyle } from 'react-native';
+import { StyleProp, TextStyle } from 'react-native';
 
 /** Vector Icons */
 import { createIconSetFromIcoMoon } from '@expo/vector-icons';
@@ -16,7 +16,7 @@ type IconProps = {
     color?: string;
     name: string;
     size: number;
-    style?: StyleProp<ViewStyle>;
+    style?: StyleProp<TextStyle>;
 };
 
 const Icon: FC<IconProps> = ({ color, name, size, style }) => {

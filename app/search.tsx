@@ -5,7 +5,7 @@ import { StyleSheet, View } from 'react-native';
 
 /** App Components */
 import Container from '@/components/common/Container';
-import ThemedText from '@/components/common/Text';
+import ThemedText from '@/components/common/ThemedText';
 import TextButton from '@/components/common/TextButton';
 import TextInput from '@/components/common/TextInput';
 

@@ -18,7 +18,7 @@ import Svg, { Defs, LinearGradient, Path, Stop } from 'react-native-svg';
 /** Icons */
 import Icon from './common/Icon';
 
-/** Hook Theme */
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 /** App Colors */

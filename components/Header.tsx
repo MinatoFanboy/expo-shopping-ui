@@ -8,7 +8,7 @@ import { useRouter } from 'expo-router';
 
 /** Components */
 import Icon from './common/Icon';
-import ThemedText from './common/Text';
+import ThemedText from './common/ThemedText';
 
 const Header: FC<{ title?: string }> = ({ title }) => {
     const router = useRouter();

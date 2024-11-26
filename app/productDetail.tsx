@@ -10,14 +10,14 @@ import { useLocalSearchParams } from 'expo-router';
 import Button from '@/components/common/Button';
 import Icon from '@/components/common/Icon';
 import Loading from '@/components/common/Loading';
-import ThemedText from '@/components/common/Text';
-import ThemedView from '@/components/common/View';
+import ThemedText from '@/components/common/ThemedText';
+import ThemedView from '@/components/common/ThemedView';
 import Ratings from '@/components/common/Ratings';
 
 import AnimatedText from '@/components/AnimatedText';
 import ParallaxContainer from '@/components/ParallaxContainer';
 
-/** Hook Theme */
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 /** App Colors */

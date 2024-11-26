@@ -5,9 +5,9 @@ import { StyleSheet, View } from 'react-native';
 
 /** App Components */
 import Icon from './Icon';
-import ThemedText from './Text';
+import ThemedText from './ThemedText';
 
-/** Hook Theme */
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 /** App Colors */

@@ -4,7 +4,7 @@ import React, { FC } from 'react';
 import { StyleProp, TextStyle } from 'react-native';
 
 /** App Components */
-import Text, { TextProps } from './Text';
+import Text, { TextProps } from './ThemedText';
 
 /** Global Colors */
 import { GlobalColors } from '@/constants/Colors';

@@ -27,7 +27,7 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 /** Prevent the splash screen from auto-hiding before asset loading is complete. */
 SplashScreen.preventAutoHideAsync();
 
-const _layout: FC = () => {
+const RootLayout: FC = () => {
     const [loaded] = useFonts({
         'Poppins-Black': require('../assets/fonts/Poppins-Black.ttf'),
         'Poppins-Bold': require('../assets/fonts/Poppins-Bold.ttf'),
@@ -53,12 +53,12 @@ const _layout: FC = () => {
 
     return (
         <AuthProvider>
-            <RootLayout />
+            <App />
         </AuthProvider>
     );
 };
 
-const RootLayout: FC = () => {
+const App: FC = () => {
     const router = useRouter();
     const { setAuth } = useAuth();
     const colorScheme = useColorScheme();
@@ -71,7 +71,7 @@ const RootLayout: FC = () => {
 
                 if (user) {
                     setAuth?.(JSON.parse(user) as any);
-                    router.replace('/(tabs)');
+                    router.replace('/(drawer)');
                 } else {
                     setAuth?.(null);
                     router.replace('/onboarding');
@@ -85,11 +85,10 @@ const RootLayout: FC = () => {
     return (
         <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
             <Stack screenOptions={{ headerShown: false }}>
-                <Stack.Screen name="(tabs)" />
-                <Stack.Screen name={'onboarding'} />
+                <Stack.Screen name="(drawer)" options={{ headerShown: false }} />
             </Stack>
         </ThemeProvider>
     );
 };
 
-export default _layout;
+export default RootLayout;

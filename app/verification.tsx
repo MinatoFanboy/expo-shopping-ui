@@ -12,7 +12,7 @@ import OTPInputView from '@twotalltotems/react-native-otp-input';
 /** App Components */
 import Button from '@/components/common/Button';
 import Container from '@/components/common/Container';
-import ThemedText from '@/components/common/Text';
+import ThemedText from '@/components/common/ThemedText';
 import TextButton from '@/components/common/TextButton';
 
 import Header from '@/components/Header';
@@ -20,7 +20,7 @@ import Header from '@/components/Header';
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';
 
-/** Hook Theme */
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 /** Dimension */

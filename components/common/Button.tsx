@@ -4,7 +4,7 @@ import React, { FC, memo, ReactNode } from 'react';
 import { ActivityIndicator, Pressable, StyleProp, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 /** App Components */
-import ThemedText from './Text';
+import ThemedText from './ThemedText';
 
 /** Global Colors */
 import { GlobalColors } from '@/constants/Colors';

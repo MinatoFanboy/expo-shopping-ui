@@ -13,7 +13,7 @@ import {
 
 /** App Components */
 import Icon from './Icon';
-import ThemedText from './Text';
+import ThemedText from './ThemedText';
 
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';

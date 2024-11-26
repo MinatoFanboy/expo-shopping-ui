@@ -7,13 +7,13 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native';
 import Button from './common/Button';
 import Icon from './common/Icon';
 import RBSheet from './common/BottomSheet';
-import ThemedText from './common/Text';
+import ThemedText from './common/ThemedText';
 import TwoPointSlider from './common/TwoPointSlider';
 
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';
 
-/** Hook Theme */
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 /** Constants */

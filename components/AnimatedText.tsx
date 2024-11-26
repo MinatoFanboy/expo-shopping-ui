@@ -1,10 +1,10 @@
-import React, { FC, PropsWithChildren, memo, useRef, useState } from 'react';
+import React, { FC, PropsWithChildren, memo, useState } from 'react';
 
 /** React Native */
 import { Animated, LayoutAnimation, Platform, StyleSheet, TouchableOpacity, UIManager, View } from 'react-native';
 
 /** App Components */
-import ThemedText from './common/Text';
+import ThemedText from './common/ThemedText';
 
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';

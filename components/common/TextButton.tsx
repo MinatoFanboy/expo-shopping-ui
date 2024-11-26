@@ -4,7 +4,7 @@ import React, { FC, memo } from 'react';
 import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
 
 /** App Components */
-import ThemedText from './Text';
+import ThemedText from './ThemedText';
 
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';

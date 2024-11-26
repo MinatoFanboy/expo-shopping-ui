@@ -1,26 +1,29 @@
 import React, { FC } from 'react';
 
 /** React Native */
-import { Image, ImageRequireSource, StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
+import { Image, StyleProp, StyleSheet, TouchableOpacity, View, ViewStyle } from 'react-native';
 
 /** Router */
 import { useRouter } from 'expo-router';
 
 /** App Components */
-import ThemedText from './common/Text';
+import ThemedText from './common/ThemedText';
 import Icon from './common/Icon';
 
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';
 
-/** Hook Theme */
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
+
+/** Constants */
+import { imageMap } from '@/constants/Constants';
 
 /** Dimension */
 import { hp } from '@/helpers/common';
 
 interface ProductProps {
-    product: { id: number; image: ImageRequireSource; price: string; title: string; type: string };
+    product: { id: number; image: string; price: string; title: string; type: string };
     style?: StyleProp<ViewStyle>;
 }
 
@@ -38,7 +41,7 @@ const Product: FC<ProductProps> = ({ product, style }) => {
             }}
             style={[styles.container, { backgroundColor }, style]}
         >
-            <Image resizeMode={'cover'} source={product.image} style={styles.thumbnail} />
+            <Image resizeMode={'cover'} source={imageMap[product.image]} style={styles.thumbnail} />
 
             <View style={{ gap: 5 }}>
                 <ThemedText bold type={'body2'}>

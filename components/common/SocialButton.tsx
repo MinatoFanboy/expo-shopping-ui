@@ -4,7 +4,7 @@ import React, { FC, memo } from 'react';
 import { Image, Pressable, StyleProp, StyleSheet, TextStyle, ViewStyle } from 'react-native';
 
 /** App Components */
-import ThemedText from './Text';
+import ThemedText from './ThemedText';
 
 /** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';

@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "image": "product1",
+        "key": 0,
+        "price": "$250",
+        "quantity": 1,
+        "size": "L",
+        "title": "Dennis Lingo",
+        "type": "Hazy Rose"
+    },
+    {
+        "id": 2,
+        "image": "product5",
+        "key": 1,
+        "price": "$200",
+        "quantity": 1,
+        "size": "L",
+        "title": "Red Cotton Shirt",
+        "type": "Hazy Rose"
+    },
+    {
+        "id": 3,
+        "image": "product8",
+        "key": 2,
+        "price": "$280",
+        "quantity": 1,
+        "size": "L",
+        "title": "Leather Jacket",
+        "type": "Hazy Rose"
+    }
+]

@@ -8,12 +8,12 @@ import Button from '@/components/common/Button';
 import Container from '@/components/common/Container';
 import Icon from '@/components/common/Icon';
 import Textarea from '@/components/common/Textarea';
-import ThemedText from '@/components/common/Text';
-import ThemedView from '@/components/common/View';
+import ThemedText from '@/components/common/ThemedText';
+import ThemedView from '@/components/common/ThemedView';
 
 import Header from '@/components/Header';
 
-/** Hook Colors */
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 /** App Colors */

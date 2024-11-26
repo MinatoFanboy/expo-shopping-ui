@@ -6,49 +6,22 @@ import { FlatList, Image, StyleSheet, View } from 'react-native';
 /** App Components */
 import Container from '@/components/common/Container';
 import Ratings from '@/components/common/Ratings';
-import ThemedText from '@/components/common/Text';
-import ThemedView from '@/components/common/View';
+import ThemedText from '@/components/common/ThemedText';
+import ThemedView from '@/components/common/ThemedView';
 
 import Header from '@/components/Header';
 
-const reviews = [
-    {
-        attachment: [require('@/assets/images/review/review-1.jpg'), require('@/assets/images/review/review-2.jpg')],
-        avatar: require('@/assets/images/avatar/avatar-2.jpg'),
-        description:
-            'It is a long established fact that a reader will be distracted by the readable content of a page whe looking at its layout.',
-        date: '05 May, 2021',
-        id: 1,
-        name: 'Ketty Perry',
-        rate: 5,
-    },
-    {
-        attachment: [require('@/assets/images/review/review-3.jpg'), require('@/assets/images/review/review-4.jpg')],
-        avatar: require('@/assets/images/avatar/avatar-3.jpg'),
-        description:
-            'It is a long established fact that a reader will be distracted by the readable content of a page whe looking at its layout.',
-        date: '04 May, 2021',
-        id: 2,
-        name: 'Johnson Mark',
-        rate: 5,
-    },
-    {
-        attachment: [require('@/assets/images/review/review-5.jpg')],
-        avatar: require('@/assets/images/avatar/avatar-4.jpg'),
-        description:
-            'It is a long established fact that a reader will be distracted by the readable content of a page whe looking at its layout.',
-        date: '04 May, 2021',
-        id: 3,
-        name: 'Pinakle Mate',
-        rate: 5,
-    },
-];
+/** Constants */
+import { imageMap } from '@/constants/Constants';
+
+/** DATA */
+import reviewData from '@/mocks/review.json';
 
 const ReviewItem: FC<{ review: any }> = ({ review }) => {
     return (
         <View style={styles.reviewItem}>
             <View style={styles.reviewTitle}>
-                <Image source={review.avatar} style={styles.avatar} />
+                <Image source={imageMap[review.avatar]} style={styles.avatar} />
 
                 <View style={{ flex: 1, gap: 10 }}>
                     <View style={styles.row}>
@@ -69,7 +42,7 @@ const ReviewItem: FC<{ review: any }> = ({ review }) => {
                             <Image
                                 key={`Attachment-${review.id}-${index}`}
                                 resizeMode={'cover'}
-                                source={item}
+                                source={imageMap[item]}
                                 style={styles.attachmentImage}
                             />
                         ))}
@@ -100,7 +73,7 @@ const ReviewCreateScreen: FC = () => {
                         </View>
                     </View>
                 }
-                data={reviews}
+                data={reviewData}
                 keyExtractor={(item) => `Review-${item.id}`}
                 renderItem={({ item }) => (
                     <Fragment>

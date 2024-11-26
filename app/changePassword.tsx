@@ -11,11 +11,11 @@ import Button from '@/components/common/Button';
 import Container from '@/components/common/Container';
 import Modal from '@/components/common/Modal';
 import TextInput from '@/components/common/TextInput';
-import ThemedText from '@/components/common/Text';
+import ThemedText from '@/components/common/ThemedText';
 
 import Header from '@/components/Header';
 
-/** Hook Theme */
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 /** Dimension */

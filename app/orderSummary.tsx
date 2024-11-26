@@ -11,40 +11,22 @@ import Button from '@/components/common/Button';
 import Container from '@/components/common/Container';
 import Icon from '@/components/common/Icon';
 import Modal from '@/components/common/Modal';
-import ThemedText from '@/components/common/Text';
-import ThemedView from '@/components/common/View';
+import ThemedText from '@/components/common/ThemedText';
+import ThemedView from '@/components/common/ThemedView';
 
 import Header from '@/components/Header';
 
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';
 
-/** Hook Colors */
+/** Constants */
+import { imageMap } from '@/constants/Constants';
+
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 
-const orders = [
-    {
-        id: 1,
-        image: require('@/assets/images/product/product-1.png'),
-        price: '$250',
-        quantity: 1,
-        title: 'Dennis Lingo',
-    },
-    {
-        id: 2,
-        image: require('@/assets/images/product/product-5.png'),
-        price: '$200',
-        quantity: 1,
-        title: 'Red Cotton Shirt',
-    },
-    {
-        id: 3,
-        image: require('@/assets/images/product/product-8.png'),
-        price: '$280',
-        quantity: 1,
-        title: 'Leather Jacket',
-    },
-];
+/** DATA */
+import orderData from '@/mocks/order.json';
 
 const OrderSummaryScreen: FC = () => {
     const backgroundColor = useThemeColor({}, 'background3');
@@ -76,10 +58,10 @@ const OrderSummaryScreen: FC = () => {
             <View style={styles.container}>
                 <ThemedText bold>Item Details</ThemedText>
 
-                {orders.map((order) => (
+                {orderData.map((order) => (
                     <View key={`OrderSummary-${order.id}`} style={styles.orderItem}>
                         <ThemedView background={'background2'} style={styles.orderImage}>
-                            <Image resizeMode={'contain'} source={order.image} style={styles.orderImage} />
+                            <Image resizeMode={'contain'} source={imageMap[order.image]} style={styles.orderImage} />
                         </ThemedView>
 
                         <View style={{ flex: 1, gap: 7 }}>

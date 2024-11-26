@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "image": "product1",
+        "price": "$250",
+        "quantity": 1,
+        "title": "Dennis Lingo"
+    },
+    {
+        "id": 2,
+        "image": "product5",
+        "price": "$200",
+        "quantity": 1,
+        "title": "Red Cotton Shirt"
+    },
+    {
+        "id": 3,
+        "image": "product8",
+        "price": "$280",
+        "quantity": 1,
+        "title": "Leather Jacket"
+    }
+]

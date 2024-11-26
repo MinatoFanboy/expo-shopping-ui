@@ -1,9 +1,9 @@
 import React, { FC } from 'react';
 
 /** React Native */
-import { StyleSheet, Text as RnText, TextProps as RnTextProps } from 'react-native';
+import { StyleSheet, Text, TextProps as RnTextProps } from 'react-native';
 
-/** Hook Theme */
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 export type TextProps = RnTextProps & {
@@ -27,7 +27,7 @@ export type TextProps = RnTextProps & {
         | 'label';
 };
 
-const Text: FC<TextProps> = ({
+const ThemedText: FC<TextProps> = ({
     bold,
     color = 'text1',
     darkColor,
@@ -40,7 +40,7 @@ const Text: FC<TextProps> = ({
     const textColor = useThemeColor({ light: lightColor, dark: darkColor }, color);
 
     return (
-        <RnText
+        <Text
             style={[
                 { color: textColor, fontFamily: 'Poppins-Regular' },
                 bold ? styles.bold : undefined,
@@ -123,4 +123,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default Text;
+export default ThemedText;

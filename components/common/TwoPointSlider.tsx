@@ -7,12 +7,12 @@ import { StyleSheet, View } from 'react-native';
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 
 /** App Components */
-import ThemedText from './Text';
+import ThemedText from './ThemedText';
 
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';
 
-/** Hook Theme */
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 /** Constants */

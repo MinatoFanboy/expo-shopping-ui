@@ -15,12 +15,12 @@ import Container from '@/components/common/Container';
 import SocialButton from '@/components/common/SocialButton';
 import TextButton from '@/components/common/TextButton';
 import TextInput from '@/components/common/TextInput';
-import ThemedText from '@/components/common/Text';
+import ThemedText from '@/components/common/ThemedText';
 
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';
 
-/** Hook Theme */
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 /** Async */

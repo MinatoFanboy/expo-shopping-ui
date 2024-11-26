@@ -10,7 +10,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 /** App Components */
-import ThemedView from './View';
+import ThemedView from './ThemedView';
 
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';
@@ -21,6 +21,7 @@ interface ContainerProps {
     keyboard?: boolean;
     scroll?: boolean;
     style?: StyleProp<ViewStyle>;
+    white?: boolean;
 }
 
 const Container: FC<PropsWithChildren<ContainerProps>> = ({
@@ -30,6 +31,7 @@ const Container: FC<PropsWithChildren<ContainerProps>> = ({
     keyboard = false,
     scroll = false,
     style,
+    white = false,
 }) => {
     const { bottom, top } = useSafeAreaInsets();
     const paddingTop = top > 0 ? top : 24;
@@ -40,7 +42,7 @@ const Container: FC<PropsWithChildren<ContainerProps>> = ({
             style={[
                 styles.container,
                 { paddingBottom, paddingTop },
-                keyboard || scroll ? undefined : { backgroundColor: GlobalColors.white },
+                white ? { backgroundColor: GlobalColors.white } : undefined,
             ]}
         >
             {header}

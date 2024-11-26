@@ -8,8 +8,8 @@ import { TextInputMask } from 'react-native-masked-text';
 
 /** App Components */
 import Icon from './Icon';
-import ThemedText from './Text';
-import ThemedView from './View';
+import ThemedText from './ThemedText';
+import ThemedView from './ThemedView';
 
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';

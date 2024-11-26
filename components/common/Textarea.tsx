@@ -6,14 +6,12 @@ import {
     TextInputProps as RnTextInputProps,
     StyleProp,
     StyleSheet,
-    TouchableOpacity,
     View,
     ViewStyle,
 } from 'react-native';
 
 /** App Components */
-import Icon from './Icon';
-import ThemedText from './Text';
+import ThemedText from './ThemedText';
 
 /** App Colors */
 import { GlobalColors } from '@/constants/Colors';

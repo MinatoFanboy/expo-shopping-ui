@@ -1,0 +1,42 @@
+[
+    {
+        "title": "Today",
+        "data": [
+            {
+                "desc": "Get 30% OFF on your first order",
+                "id": 1,
+                "title": "Flat 30% OFF",
+                "type": "discount"
+            },
+            {
+                "desc": "Get Flat $50 OFF on this new year. We hope this year you will get more confort.",
+                "id": 2,
+                "title": "Special New Year Offer",
+                "type": "notify"
+            },
+            {
+                "desc": "Buy 1 Get 1 Offer on selected product... hurry up",
+                "id": 3,
+                "title": "Best Deal of the Day",
+                "type": "sale"
+            }
+        ]
+    },
+    {
+        "title": "Yesterday",
+        "data": [
+            {
+                "desc": "Get 30% OFF on your first order",
+                "id": 1,
+                "title": "Flat 50% OFF",
+                "type": "discount"
+            },
+            {
+                "desc": "Get Flat $50 OFF on this new year. We hope this year you will get more confort.",
+                "id": 2,
+                "title": "Special New Year Offer",
+                "type": "notify"
+            }
+        ]
+    }
+]

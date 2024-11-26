@@ -7,9 +7,9 @@ import { FlatList, Image, StyleSheet, TouchableOpacity, View } from 'react-nativ
 import { Fade, Placeholder, PlaceholderLine } from 'rn-placeholder';
 
 /** App Components */
-import ThemedText from './common/Text';
+import ThemedText from './common/ThemedText';
 
-/** Hook Theme */
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 /** Async */

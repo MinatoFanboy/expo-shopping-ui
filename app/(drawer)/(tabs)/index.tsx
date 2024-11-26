@@ -9,7 +9,7 @@ import { useNavigation, useRouter } from 'expo-router';
 /** App Components */
 import Container from '@/components/common/Container';
 import Icon from '@/components/common/Icon';
-import ThemedText from '@/components/common/Text';
+import ThemedText from '@/components/common/ThemedText';
 
 /** Home Components */
 import Brands from '@/components/Brands';

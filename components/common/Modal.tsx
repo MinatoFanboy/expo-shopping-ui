@@ -6,7 +6,7 @@ import { Animated, Modal as RnModal, StyleSheet } from 'react-native';
 /** Blur */
 import { BlurView } from 'expo-blur';
 
-/** Hook Theme */
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 interface ModalRef {

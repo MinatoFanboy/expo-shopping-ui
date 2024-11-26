@@ -7,7 +7,7 @@ import { StyleSheet, View } from 'react-native';
 import { useRouter } from 'expo-router';
 
 /** App Components */
-import ThemedText from './common/Text';
+import ThemedText from './common/ThemedText';
 import TextButton from './common/TextButton';
 
 /** Product Components */
@@ -26,39 +26,11 @@ const getPopularProducts = async () => {
     return [];
 };
 
-const products = [
-    {
-        id: 1,
-        image: require('@/assets/images/product/product-1.png'),
-        price: '$250',
-        title: 'Dennis Lingo',
-        type: 'Hazy Rose',
-    },
-    {
-        id: 2,
-        image: require('@/assets/images/product/product-3.png'),
-        price: '$140',
-        title: 'Marks & Spencer',
-        type: 'Hazy Rose',
-    },
-    {
-        id: 3,
-        image: require('@/assets/images/product/product-2.png'),
-        price: '$200',
-        title: 'Trucker Jacket',
-        type: 'Hazy Rose',
-    },
-    {
-        id: 4,
-        image: require('@/assets/images/product/product-9.png'),
-        price: '$300',
-        title: 'Hooded Jacket',
-        type: 'Hazy Rose',
-    },
-];
+/** DATA */
+import popularData from '@/mocks/product.json';
 
 const PopularProductContent: FC<{ limit?: number }> = ({ limit }) => {
-    const current = limit ? products.slice(0, limit) : products;
+    const current = limit ? popularData.slice(0, limit) : popularData;
 
     return (
         <View style={styles.container}>

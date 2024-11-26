@@ -17,9 +17,9 @@ import Button from '@/components/common/Button';
 import Container from '@/components/common/Container';
 import HighlightText from '@/components/common/HighlightText';
 import Icon from '@/components/common/Icon';
-import ThemedText from '@/components/common/Text';
+import ThemedText from '@/components/common/ThemedText';
 
-/** Hook Theme */
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 /** Constants */
@@ -74,7 +74,7 @@ const OnboardingScreen: FC = () => {
     }, []);
 
     return (
-        <Container>
+        <Container white>
             {/** Image Background */}
             <FlatList
                 data={onboardingData}

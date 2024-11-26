@@ -19,9 +19,9 @@ import { useRouter } from 'expo-router';
 
 /** App Components */
 import Icon from './common/Icon';
-import ThemedText from './common/Text';
+import ThemedText from './common/ThemedText';
 
-/** Hook Theme */
+/** Hook App Theme */
 import { useThemeColor } from '@/hooks/useThemeColor';
 
 interface ContainerProps {
